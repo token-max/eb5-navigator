@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
+<title>Protected</title>
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23191715'/%3E%3Ctext x='16' y='22' font-family='ui-monospace,Menlo,monospace' font-size='15' font-weight='600' fill='%23d98a3f' text-anchor='middle'%3E5%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:oklch(98.6% 0.005 85); --paper-sunk:oklch(96.4% 0.006 82);
+  --ink:oklch(21% 0.012 60); --ink-2:oklch(44% 0.011 62); --ink-3:oklch(52% 0.011 65);
+  --rule:oklch(89% 0.006 72); --accent:oklch(54% 0.140 52); --accent-ink:oklch(41% 0.118 48);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,"Segoe UI",system-ui,sans-serif;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:oklch(16.5% 0.009 62); --paper-sunk:oklch(20.5% 0.010 62);
+  --ink:oklch(93% 0.007 75); --ink-2:oklch(74% 0.010 70); --ink-3:oklch(64% 0.010 65);
+  --rule:oklch(29% 0.010 62); --accent:oklch(75% 0.128 62); --accent-ink:oklch(81% 0.112 65);}}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0; min-height:100svh; display:grid; place-items:center; padding:24px;
+  background:var(--paper); color:var(--ink); font:400 16px/1.6 var(--sans);
+  -webkit-font-smoothing:antialiased}
+.card{width:100%; max-width:428px}
+.mark{font:500 11.5px/1 var(--mono); letter-spacing:.13em; text-transform:uppercase;
+  color:var(--ink-3); margin-bottom:20px}
+h1{margin:0 0 12px; font-size:27px; font-weight:500; letter-spacing:-0.028em}
+p{margin:0 0 26px; color:var(--ink-2); font-size:15.5px; max-width:38ch}
+form{display:flex; gap:9px}
+input{flex:1 1 auto; min-width:0; font:400 15px/1 var(--sans); color:var(--ink);
+  background:var(--paper-sunk); border:1px solid var(--rule); border-radius:6px; padding:12px 14px}
+input:focus{outline:2px solid var(--accent); outline-offset:2px; border-color:var(--accent)}
+button{flex:none; font:500 14px/1 var(--sans); color:oklch(99% 0 0); background:var(--accent);
+  border:0; border-radius:6px; padding:12px 20px; cursor:pointer; transition:opacity 130ms ease}
+button:hover{opacity:.88}
+button[disabled]{opacity:.5; cursor:default}
+.msg{margin-top:16px; min-height:20px; font:400 13.5px/1.5 var(--sans); color:var(--accent-ink)}
+.hint{margin-top:30px; font:400 12px/1.6 var(--mono); color:var(--ink-3); letter-spacing:.01em; max-width:44ch}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="mark">EB-5 &middot; decision brief</div>
+  <h1>This page is encrypted.</h1>
+  <p>Enter the passphrase you were given. Nothing readable is stored here without it.</p>
+  <form id="f" autocomplete="off">
+    <input id="p" type="password" placeholder="passphrase" autocomplete="current-password"
+           autocapitalize="off" autocorrect="off" spellcheck="false" required aria-label="Passphrase">
+    <button id="b" type="submit">Unlock</button>
+  </form>
+  <div class="msg" id="m" role="status" aria-live="polite"></div>
+  <div class="hint">AES-256-GCM, key derived with PBKDF2-SHA256 over __ITER__ iterations.
+    Decryption happens in this browser; the passphrase is never sent anywhere.</div>
+</main>
+<script>
+(function(){
+  "use strict";
+  var SALT="__SALT__", IV="__IV__", CT="__CT__", ITER=__ITER__, KEY="eb5.pass";
+  var f=document.getElementById('f'), p=document.getElementById('p'),
+      b=document.getElementById('b'), m=document.getElementById('m');
+  function bin(s){var r=atob(s), a=new Uint8Array(r.length);
+    for(var i=0;i<r.length;i++) a[i]=r.charCodeAt(i); return a;}
+  function unlock(pass, quiet){
+    b.disabled=true; if(!quiet) m.textContent='Decrypting\u2026';
+    return crypto.subtle.importKey('raw', new TextEncoder().encode(pass), 'PBKDF2', false, ['deriveKey'])
+      .then(function(base){
+        return crypto.subtle.deriveKey(
+          {name:'PBKDF2', salt:bin(SALT), iterations:ITER, hash:'SHA-256'},
+          base, {name:'AES-GCM', length:256}, false, ['decrypt']);})
+      .then(function(k){ return crypto.subtle.decrypt({name:'AES-GCM', iv:bin(IV)}, k, bin(CT)); })
+      .then(function(buf){
+        try{ sessionStorage.setItem(KEY, pass); }catch(e){}
+        var html=new TextDecoder().decode(buf);
+        document.open(); document.write(html); document.close();
+      })
+      .catch(function(){
+        b.disabled=false;
+        try{ sessionStorage.removeItem(KEY); }catch(e){}
+        if(!quiet){ m.textContent='That passphrase does not open this page.'; p.select(); }
+        else m.textContent='';
+      });
+  }
+  f.addEventListener('submit', function(e){ e.preventDefault(); if(p.value) unlock(p.value,false); });
+  var saved=null; try{ saved=sessionStorage.getItem(KEY); }catch(e){}
+  if(saved) unlock(saved,true); else p.focus();
+})();
+</script>
+</body>
+</html>
