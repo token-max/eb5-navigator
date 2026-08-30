@@ -46,7 +46,7 @@ button[disabled]{opacity:.5; cursor:default}
 <main class="card">
   <div class="mark">EB-5 &middot; decision brief</div>
   <h1>This page is encrypted.</h1>
-  <p>Enter the passphrase you were given. Nothing readable is stored here without it.</p>
+  <p>Enter the passphrase you were given. Nothing readable is stored here without it. This browser will remember it.</p>
   <form id="f" autocomplete="off">
     <input id="p" type="password" placeholder="passphrase" autocomplete="current-password"
            autocapitalize="off" autocorrect="off" spellcheck="false" required aria-label="Passphrase">
@@ -73,19 +73,19 @@ button[disabled]{opacity:.5; cursor:default}
           base, {name:'AES-GCM', length:256}, false, ['decrypt']);})
       .then(function(k){ return crypto.subtle.decrypt({name:'AES-GCM', iv:bin(IV)}, k, bin(CT)); })
       .then(function(buf){
-        try{ sessionStorage.setItem(KEY, pass); }catch(e){}
+        try{ localStorage.setItem(KEY, pass); }catch(e){}
         var html=new TextDecoder().decode(buf);
         document.open(); document.write(html); document.close();
       })
       .catch(function(){
         b.disabled=false;
-        try{ sessionStorage.removeItem(KEY); }catch(e){}
+        try{ localStorage.removeItem(KEY); }catch(e){}
         if(!quiet){ m.textContent='That passphrase does not open this page.'; p.select(); }
         else m.textContent='';
       });
   }
   f.addEventListener('submit', function(e){ e.preventDefault(); if(p.value) unlock(p.value,false); });
-  var saved=null; try{ saved=sessionStorage.getItem(KEY); }catch(e){}
+  var saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
   if(saved) unlock(saved,true); else p.focus();
 })();
 </script>
