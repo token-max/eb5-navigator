@@ -2,12 +2,29 @@
 
 A single-file, self-contained brief on an EB-5 rural set-aside filing: whether the petition
 gets approved, and whether the capital comes back. No external requests, no analytics, no
-build step — `index.html` is the whole site.
+build step, no framework.
 
-Two reading levels, switchable in the header:
+## Contents
+
+`index.html` is the whole site. The brief itself is **encrypted at rest** — the file ships
+only ciphertext plus a lock screen. Entering the passphrase derives an AES-256-GCM key with
+PBKDF2-SHA256 (600,000 iterations) in the browser and decrypts the document in place. The
+passphrase is never transmitted; a correct one is held in `sessionStorage` so a reload within
+the same tab does not re-prompt.
+
+Without the passphrase there is nothing readable in the source, in the repository, or to a
+crawler.
+
+## Reading levels
+
+The decrypted brief has two, switchable in the header:
 
 - **Explain it** — plain-language walkthrough for a first-time reader. Reference tables and
-  operational checklists stay collapsed.
-- **Everything** — every table, checklist, quotation and source, expanded.
+  operational checklists stay collapsed; a "Start here" section covers what EB-5 is, the
+  seven-step journey, and the terminology.
+- **Everything** — every table, checklist, quotation and source expanded.
 
-Marked `noindex` and excluded in `robots.txt`.
+## Re-encrypting after an edit
+
+Edit the plaintext source, then regenerate `index.html` with the same passphrase. The
+ciphertext, salt and IV are all embedded in the output file.
