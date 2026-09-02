@@ -6,7 +6,8 @@ build step, no framework.
 
 ## Contents
 
-`index.html` is the whole site. The brief itself is **encrypted at rest** — the file ships
+`index.html` is the decision brief. `projects.html` is a companion board comparing the ten
+offering documents that were read for it. Both are single files. The brief itself is **encrypted at rest** — the file ships
 only ciphertext plus a lock screen. Entering the passphrase derives an AES-256-GCM key with
 PBKDF2-SHA256 (600,000 iterations) in the browser and decrypts the document in place. The
 passphrase is never transmitted; a correct one is held in `sessionStorage` so a reload within
