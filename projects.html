@@ -105,6 +105,51 @@ b,strong{font-weight:600;color:var(--ink)}
 .xs{font-size:12px;line-height:1.5;color:var(--ink3);letter-spacing:.005em}
 .eyebrow{font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
 
+/* outcome - the one observable EB-5 ending */
+.obody{font-size:15px;line-height:1.72;color:var(--ink2);max-width:74ch;margin:0 0 18px}
+.obody b{color:var(--ink)}
+.otl{list-style:none;padding:0;margin:0 0 30px;border-left:2px solid var(--line)}
+.otl li{position:relative;padding:0 0 18px 22px}
+.otl li::before{content:"";position:absolute;left:-5px;top:7px;width:8px;height:8px;border-radius:50%;
+  background:var(--bg);box-shadow:0 0 0 2px var(--accent)}
+.otl .owhen{display:block;font-family:var(--mono);font-size:11.5px;font-weight:600;
+  letter-spacing:.01em;color:var(--accent);margin-bottom:3px}
+.otl p{margin:0;font-size:14px;line-height:1.6;color:var(--ink2)}
+.otl p b{color:var(--ink)}
+.onum{width:100%;border-collapse:collapse;margin:0 0 30px;border:1px solid var(--line);
+  border-radius:12px;overflow:hidden;background:var(--panel)}
+.onum td{padding:11px 16px;border-bottom:1px solid var(--line2);font-size:13.5px;vertical-align:baseline}
+.onum tr:last-child td{border-bottom:0;background:color-mix(in oklch,var(--accent) 4%,transparent)}
+.onum .olab{color:var(--ink2);width:38%}
+.onum .oval{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--ink);
+  font-variant-numeric:tabular-nums;text-align:right;width:22%;white-space:nowrap}
+.onum .onote{color:var(--ink3);font-size:12.5px}
+.lessons{margin:0 0 30px}
+.lesson{display:grid;grid-template-columns:34px 1fr;gap:14px;padding:18px 0;
+  border-top:1px solid var(--line)}
+.lesson:last-child{border-bottom:1px solid var(--line)}
+.lesson .lnum{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--ink3);
+  border:1px solid var(--line);border-radius:7px;height:26px;display:grid;place-items:center}
+.lesson .lbody > b{display:block;font-size:15px;line-height:1.4;margin-bottom:6px;color:var(--ink)}
+/* the heading b is a DIRECT child; an unscoped rule turned every inline <b> inside the
+   paragraph into its own line, which read as three broken sentences. */
+.lesson .lbody p b{display:inline;font-size:inherit;line-height:inherit;margin:0}
+.lesson .lbody p{margin:0;font-size:14px;line-height:1.68;color:var(--ink2);max-width:74ch}
+.oask{counter-reset:oa;list-style:none;padding:0;margin:0 0 26px}
+.oask li{counter-increment:oa;position:relative;padding-left:32px;margin-bottom:11px;
+  font-size:14px;line-height:1.6;color:var(--ink2);max-width:74ch}
+.oask li::before{content:counter(oa);position:absolute;left:0;top:1px;width:21px;height:21px;
+  border:1px solid var(--line);border-radius:6px;font-size:10.5px;font-weight:600;color:var(--ink3);
+  display:grid;place-items:center;font-family:var(--mono)}
+.ocav{font-size:13px;line-height:1.65;color:var(--ink3);max-width:74ch;
+  border-left:2px solid var(--line);padding-left:16px;margin:26px 0 0}
+@media (max-width:640px){
+  .onum .olab{width:auto}.onum .oval{width:auto}
+  .onum .onote{display:none}
+  .lesson{grid-template-columns:1fr;gap:8px}
+  .lesson .lnum{width:26px}
+}
+
 /* nav */
 nav{position:sticky;top:0;z-index:60;background:color-mix(in oklch,var(--bg) 88%,transparent);
   backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
@@ -477,6 +522,7 @@ h4.sevhead:first-child{margin-top:14px}
   <span class="brand">EB-5 project analysis</span>
   <div class="navlinks">
   <a href="#primer">Primer</a>
+  <a href="#outcome">Outcome</a>
   <a href="#answer">Answer</a>
   <a href="#matrix">Matrix</a>
   <a href="#gates">Gates</a>
@@ -535,6 +581,35 @@ h4.sevhead:first-child{margin-top:14px}
   any document a sponsor hands you &mdash; including a copy of the same instrument.</p>
   <table class="srctier"><thead><tr><th>Tier</th><th>What is in it</th><th>Why it sits there</th></tr>
   </thead><tbody><tr><td class="tier">Highest &mdash; lying is expensive</td><td>Court dockets and sworn filings, SEC enforcement actions, USCIS approval and termination notices, recorded deeds and mortgages at a county recorder, bankruptcy schedules, building permits, UCC filings.</td><td class="why">Someone faces sanction for lying in these. A recorded mortgage satisfaction is proof a loan was repaid; nothing a sponsor writes is.</td></tr><tr><td class="tier">High</td><td>SEC <abbr title="The short public notice a private offering files with the SEC within fifteen days of its first sale. It states the raise size and how much has sold.">Form D</abbr> filings, Secretary of State registrations, Census and federal designations, state environmental and water permits.</td><td class="why">Real and liability-bearing, but self-reported, unaudited, and often months out of date. Never read a Form D&rsquo;s &ldquo;amount sold&rdquo; as today&rsquo;s number.</td></tr><tr><td class="tier">Medium</td><td>Named journalism and trade press that quotes a filing or an identified source; a third-party report commissioned and paid for by the sponsor.</td><td class="why">A signed economist&rsquo;s report is real evidence. The sponsor still chose and paid the economist.</td></tr><tr><td class="tier">Low &mdash; a lead, never evidence</td><td>Pseudonymous forum and message-board posts.</td><td class="why">Worth pursuing only when the post names something checkable: a case number, a fund name, a date, a figure. Then verify that, and cite the record rather than the post.</td></tr><tr><td class="tier">Worthless</td><td>Reviews on a site the subject controls or pays for, star ratings, testimonials, trade-directory awards, and any claim of verification where the verifier is not named.</td><td class="why">Treat these as marketing, because that is what they are.</td></tr></tbody></table>
+</section>
+
+<section id="outcome">
+  <div class="sechead"><h2>What happens when an EB-5 project fails</h2>
+  <p>Every offering document describes a plan. This is the only one in this research where the ending is already on the public record &mdash; a fund of 99 investors at $800,000 each, secured by a recorded first mortgage on 1,377 acres, whose borrower filed for bankruptcy. It is worth more than any brochure, because it shows what the protections actually do.</p></div>
+
+  <p class="small" style="color:var(--ink2);max-width:78ch">Everything below is quoted from two court documents: the debtor&rsquo;s sworn schedules, filed 22 August 2025, and the settlement agreement the court approved on 24 March 2026. No sponsor supplied either one and neither can be edited by anyone with an interest in how it reads.</p>
+
+  <h3 class="ph">This was the structure you are told to want</h3>
+  <p class="obody">Not a mezzanine slice, not preferred equity, not an unsecured note. A loan agreement dated 11 August 2022 for up to $79,200,000, funded by up to 99 investors at $800,000 each. Security was a Deed of Trust, Assignment of Rents and Leases, Security Agreement and Fixture Filing, executed 31 October 2022 and <b>recorded on 9 November 2022</b> in two counties &mdash; Summit County entry 01197541, book 2763, page 1333, and Morgan County entry 162312, book 396, page 599. The collateral ran to twenty-three Summit County parcels and six in Morgan County, taking in the land, the buildings, the rents and the water rights. The debtor&rsquo;s own filing lists the EB-5 fund first in priority. If you had read this offering in 2022 and checked the recorder, you would have found exactly what you were promised.</p>
+
+  <h3 class="ph">What happened anyway</h3>
+  <ol class="otl"><li><span class="owhen">Nov 2022 &ndash; Nov 2024</span><p>Money goes out the door across two years.</p></li><li><span class="owhen">13 May 2025</span><p>After sequential notices of default, the fund accelerates: the loan is terminated, no further money will be advanced, everything is due now.</p></li><li><span class="owhen">8 August 2025</span><p>The borrower files <abbr title="Court-supervised reorganisation. The company keeps trading while a judge decides who gets paid what.">Chapter 11</abbr> in the District of Utah.</p></li><li><span class="owhen">11 September 2025</span><p>The fund moves on an emergency basis to have a trustee appointed, i.e. to take the company out of its own management&rsquo;s hands. The court grants it on 25 September.</p></li><li><span class="owhen">14 November 2025</span><p>The trustee asks the court to let the fund lend the estate <b>new money</b> &mdash; up to $6.3m, later raised to $6.8m &mdash; including to pay a public infrastructure district assessment.</p></li><li><span class="owhen">27 January 2026</span><p>The trustee gives notice that he intends to <b>challenge the fund&rsquo;s own claim</b>.</p></li><li><span class="owhen">17&ndash;24 March 2026</span><p>Private mediation. It settles on the last day.</p></li></ol>
+
+  <h3 class="ph">The numbers</h3>
+  <table class="onum"><tbody><tr><td class="olab">Investor capital committed</td><td class="oval">$79,200,000</td><td class="onote">99 investors &times; $800,000</td></tr><tr><td class="olab">Principal actually drawn</td><td class="oval">$78,870,000</td><td class="onote">essentially the whole facility</td></tr><tr><td class="olab">Interest accrued and unpaid</td><td class="oval">$7,161,962</td><td class="onote">at the bankruptcy filing date</td></tr><tr><td class="olab">Legal fees added to the loan</td><td class="oval">$135,992</td><td class="onote">charged to the borrower, per the loan terms</td></tr><tr><td class="olab">Total claim</td><td class="oval">$86,167,955</td><td class="onote">reviewed and confirmed by the trustee</td></tr><tr><td class="olab">Value of the collateral</td><td class="oval">$47,665,648</td><td class="onote">the debtor&rsquo;s own sworn schedule</td></tr><tr><td class="olab">Coverage</td><td class="oval">55%</td><td class="onote">the first lien was worth about half the debt</td></tr></tbody></table>
+
+  <h3 class="ph">What the fund actually got</h3>
+  <p class="obody">Not money. Land. The settlement has the fund bidding for the borrower&rsquo;s assets with the debt itself &mdash; a <b>credit bid of $65,000,000</b>, made up of the new loan first (about $7,000,000) and then $58,000,000 of the original claim, with the right to go up to $89,000,000 at auction. It adds $1,800,000 in cash to pay the administrative costs of the bankruptcy. The shortfall &mdash; the difference between the $86.2m owed and what it bids &mdash; is capped by agreement at $10,000,000 and ranks behind nothing but ahead of nothing, as an ordinary unsecured claim.</p>
+  <div class="callout"><span class="eyebrow">Where it leaves the investors</span>
+    <p class="small" style="color:var(--ink2)">So the end state is this: ninety-nine people&rsquo;s $78.87m has become a part-built golf and residential development in Utah that the fund now owns and has to finish, market and sell. There is no repayment date, because there is no repayment. There is a disposal.</p></div>
+
+  <h3 class="ph">What this teaches that no offering document will</h3>
+  <div class="lessons"><div class="lesson"><div class="lnum">1</div><div class="lbody"><b>A first lien buys control, not repayment.</b><p>The fund did everything a secured lender is supposed to do, in the right order and quickly: notices of default, acceleration, an emergency application for a trustee, rescue financing, a credit bid. The machinery worked exactly as designed. It still ends with the fund owning the land instead of holding the cash. When a sponsor says &ldquo;we hold a first mortgage&rdquo;, that is true and it is worth having &mdash; it is just not the same sentence as &ldquo;you get your money back&rdquo;.</p></div></div><div class="lesson"><div class="lnum">2</div><div class="lbody"><b>Defending the lien cost roughly $13m of new money.</b><p>Up to $6.8m of rescue lending, $1.8m of cash at closing, a $4m guarantee to the other creditors backed by a standby letter of credit, and up to $400,000 to stop the golf course deteriorating. None of that was in the $79.2m the investors subscribed. A fund that cannot write this cheque loses the collateral to somebody who can. <b>Ask every sponsor: if the borrower defaults, who funds the enforcement, out of what, and does drawing it dilute me?</b> It is not a question any offering document answers on its own.</p></div></div><div class="lesson"><div class="lnum">3</div><div class="lbody"><b>The trustee attacked the EB-5 fund&rsquo;s claim itself.</b><p>Before mediation the trustee set out claims against the fund for constructive fraudulent transfer, equitable subordination, recharacterisation and unjust enrichment &mdash; and the settlement records, in terms, that these &ldquo;could impact&rdquo; the claim. Recharacterisation means a court treating what you called a loan as equity. Equitable subordination means pushing a secured lender behind the trade creditors it was ahead of. Both were live enough to settle. The fund bought a release, and the price shows in the gap between the $86.2m claim and the $58m it bid. <b>This is the standing risk to every loan-model EB-5 deal and it is almost never disclosed as one.</b></p></div></div><div class="lesson"><div class="lnum">4</div><div class="lbody"><b>A district assessment got paid before the mortgage.</b><p>The very first rescue-financing motion asked for authority to pay the local public infrastructure district&rsquo;s 2025 assessment, and the settlement obliges the fund to take on <b>all</b> of that district&rsquo;s obligations along with the taxes. An assessment is not a mortgage and does not queue behind one &mdash; it is collected like a property tax. If a project you are looking at carries a <abbr title="A property-improvement loan collected through the property tax bill — so it is paid before every mortgage and cannot be pushed back.">C-PACE</abbr> loan, a special assessment, an improvement district or a special tax, that money sits ahead of yours in practice whatever the mortgage says. One project in this file carries a $100m C-PACE disclosure; this is the evidence for why that matters, and it is evidence rather than theory.</p></div></div><div class="lesson"><div class="lnum">5</div><div class="lbody"><b>Four years in, and the clock is still running.</b><p>First money out in November 2022. Acceleration May 2025. Settlement March 2026. A sale in mid-2026 at the earliest, and then a development to build and sell after that. For the immigration side this is survivable and even helpful &mdash; capital that is demonstrably still at risk is exactly what the second petition needs. For a person who planned around getting the money back in year five, it is not.</p></div></div></div>
+
+  <h3 class="ph">What to put to a sponsor because of this</h3>
+  <ol class="oask"><li>If the borrower defaults, what is the source of enforcement capital, is it committed in writing, and does drawing on it dilute or subordinate me?</li><li>Has any trustee, receiver or creditors&rsquo; committee ever asserted recharacterisation or equitable subordination against a fund you manage or have managed? Name every one.</li><li>Does the collateral sit behind any assessment district, C-PACE lien, special tax or improvement district? Name each and state the balance outstanding.</li><li>What is the current loan-to-value on the collateral, on whose appraisal, and dated when?</li><li>Does the fund&rsquo;s governing document let the manager commit further investor capital to protect the lien without a vote?</li></ol>
+
+  <p class="ocav">This is one fund and one borrower, and a bad outcome for one project is not a verdict on a sponsor or on the programme. It is used here for the opposite reason: it is the only place in this research where the machinery can be watched working, so it is the only place the abstract protections can be priced. Read it as a specimen, not as an indictment.</p>
 </section>
 
 <section id="answer">
