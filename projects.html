@@ -176,6 +176,11 @@ nav a.sib+.dl{margin-left:8px}
 
 /* hero */
 header{padding:76px 0 8px}
+/* The first screen has to hold the decision, the branch and the four candidates inside 900px, so the
+   masthead gets what is left: one line of provenance and one line of verdict. */
+header.tight{padding:22px 0 0}
+header.tight h1{font-size:clamp(20px,2.3vw,27px);line-height:1.18;font-weight:500;letter-spacing:-.018em;
+  margin:7px 0 0;max-width:34ch;text-wrap:balance}
 .hero-tag{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
   color:var(--accent);background:var(--accent-soft);padding:5px 11px;border-radius:99px;margin-bottom:22px}
 .verdict{margin:30px 0 0;padding:28px 30px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
@@ -330,6 +335,109 @@ ol.rcq .qto{font-size:11px;color:var(--ink3);margin:0 0 4px;text-transform:upper
 .rcdocs{margin-top:20px;border-top:1px dashed var(--line);padding-top:16px}
 .rcdocs h5{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3);
   font-weight:600;margin:0 0 9px}
+/* the dated plan */
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:0;margin:0 0 30px;
+  border:1px solid var(--line);border-radius:11px;overflow:hidden;background:var(--panel)}
+.rail>div{padding:13px 15px;border-right:1px solid var(--line);position:relative}
+.rail>div:last-child{border-right:0}
+.rail .rd{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+.rail .rw{font-size:12.5px;line-height:1.42;color:var(--ink2);margin-top:5px}
+.rail>div.hot{background:var(--no-bg)}
+.rail>div.hot .rd{color:var(--no)}
+table.acts{width:100%;border-collapse:collapse;font-size:13px;margin:0}
+table.acts th{text-align:left;font-size:10.5px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink3);padding:0 12px 8px 0;border-bottom:1px solid var(--line)}
+table.acts td{padding:11px 12px 11px 0;border-bottom:1px solid var(--line2);vertical-align:top;
+  line-height:1.5;color:var(--ink2)}
+table.acts td.w{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink);
+  width:1%}
+table.acts td.w.fix{color:var(--no)}
+table.acts td.dd{color:var(--ink);width:31%}
+table.acts td.sl{font-size:12.5px;color:var(--ink3)}
+table.acts td.sl b{color:var(--ink2)}
+table.acts tr.milestone td{background:color-mix(in oklch,var(--no) 4%,transparent)}
+.ochip{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:2px 6px;border-radius:4px;white-space:nowrap}
+.ochip.own{background:var(--accent-soft);color:var(--accent)}
+.ochip.law{background:var(--warn-bg);color:var(--warn)}
+.ochip.spo{background:var(--line2);color:var(--ink2)}
+.ochip.nob{background:var(--no-bg);color:var(--no)}
+.pchip{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 4px;border-radius:3px;
+  background:var(--line2);color:var(--ink3);margin-right:3px}
+.deriv{font-size:11.5px;line-height:1.55;color:var(--ink3);margin:14px 0 0;max-width:88ch}
+
+/* Band A -- the call. Two columns so the countdown reads as a constraint on the sentence beside it,
+   not as a separate fact the reader has to join up. */
+#decide{padding:22px 0 8px}
+.dcall{display:flex;align-items:flex-start;gap:26px;padding:0 0 16px;border-bottom:1px solid var(--line)}
+.dc-l{flex:1;min-width:0}
+.dc-call{font-size:25px;line-height:1.22;letter-spacing:-.02em;font-weight:500;color:var(--ink);
+  margin:6px 0 8px;text-wrap:balance}
+.dc-why{font-size:14px;line-height:1.6;color:var(--ink2);margin:0;max-width:72ch;text-wrap:pretty}
+.dc-r{flex:0 0 auto;text-align:center;border:1px solid var(--line);border-radius:11px;
+  padding:12px 18px;background:var(--panel)}
+.dc-r b{display:block;font-size:38px;line-height:1;font-weight:600;letter-spacing:-.03em;color:var(--no);
+  font-variant-numeric:tabular-nums}
+.dc-r span{display:block;font-size:10.5px;line-height:1.35;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink3);margin-top:6px}
+
+/* Band B -- the branch. Rendered as two boxes rather than prose because the reader's question is
+   "which one", and a fork drawn as a fork answers it without being read. */
+.dbranch{margin:16px 0 0;border:1px solid var(--line);border-radius:11px;background:var(--panel);
+  overflow:hidden}
+.bh{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap;padding:12px 16px;
+  border-bottom:1px solid var(--line);background:var(--no-bg)}
+.bwhen{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--no);border:1px solid color-mix(in oklch,var(--no) 35%,transparent);
+  border-radius:4px;padding:2px 7px}
+.bh b{font-size:14.5px;color:var(--ink)}
+.bnote{font-size:12px;color:var(--ink2)}
+.forks{display:grid;grid-template-columns:1fr 1fr}
+.fork{padding:12px 16px 13px;border-right:1px solid var(--line)}
+.fork:last-child{border-right:0}
+.fq{font-size:11.5px;line-height:1.4;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;
+  font-weight:600}
+.fq::before{content:"if ";color:var(--ink3)}
+.fa{margin:8px 0 6px;font-size:16px;letter-spacing:-.01em}
+.fa b{font-weight:600;color:var(--ink)}
+.fa .pid{font-size:12px}
+.fw{font-size:12.5px;line-height:1.52;color:var(--ink2);margin:0;text-wrap:pretty}
+.bcav{font-size:11.5px;line-height:1.55;color:var(--ink3);margin:0;padding:11px 16px;
+  border-top:1px solid var(--line2);background:var(--warn-bg)}
+.bcav b{color:var(--warn)}
+
+/* Band C -- the live four. One row per candidate, the blocking fact in the widest column, because
+   that fact is what the reader is actually comparing. */
+table.dlive{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0 0}
+table.dlive th{text-align:left;font-size:10.5px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink3);padding:0 12px 8px 0;border-bottom:1px solid var(--line)}
+table.dlive td{padding:10px 12px 10px 0;border-bottom:1px solid var(--line2);vertical-align:top}
+table.dlive td.rk{width:1%;font-size:11px;font-weight:700;color:var(--ink3);padding-top:12px}
+table.dlive td.pid{width:1%;padding-top:12px}
+table.dlive td.nm{width:19%;line-height:1.35}
+table.dlive td.nm a{font-weight:600;color:var(--ink);border-bottom-color:transparent}
+table.dlive td.nm a:hover{border-bottom-color:var(--accent)}
+table.dlive td.nm .st{display:block;font-size:11px;color:var(--ink3);margin-top:3px}
+table.dlive td.sc{width:1%;white-space:nowrap;padding-top:11px}
+table.dlive td.op{width:1%;text-align:right;font-variant-numeric:tabular-nums;color:var(--ink2);
+  padding-top:12px;padding-right:18px}
+table.dlive td.bl{font-size:12.5px;line-height:1.5;color:var(--ink2)}
+.mb{display:inline-flex;align-items:baseline;gap:3px;font-variant-numeric:tabular-nums}
+.mb b{font-size:15px;font-weight:600;color:var(--ink)}
+.mbt{font-size:10px;color:var(--ink3)}
+.mbb{display:block;width:44px;height:4px;border-radius:2px;background:var(--line2);
+  margin-left:5px;align-self:center;overflow:hidden}
+.mbb s{display:block;height:100%;text-decoration:none}
+.mbb s.c{background:var(--warn)}
+.mbb s.p{background:var(--ok)}
+.mb.none{font-size:11px;font-style:italic;color:var(--ink3)}
+.dtoday{font-size:13px;line-height:1.55;color:var(--ink2);margin:13px 0 0;max-width:78ch}
+@media(max-width:860px){
+  .dcall{flex-direction:column;gap:14px}
+  .forks{grid-template-columns:1fr}
+  .fork{border-right:0;border-bottom:1px solid var(--line)}
+  .fork:last-child{border-bottom:0}
+}
 .rcbar{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin:0 0 15px}
 .copybtn{font:550 12.5px/1 var(--sans);color:var(--bg);background:var(--accent);border:0;
   border-radius:7px;padding:9px 15px;cursor:pointer;letter-spacing:.005em;
@@ -531,37 +639,60 @@ h4.sevhead:first-child{margin-top:14px}
 <nav><div class="wrap">
   <span class="brand">EB-5 project analysis</span>
   <div class="navlinks">
-  <a href="#primer">Primer</a>
-  <a href="#outcome">Outcome</a>
-  <a href="#answer">Answer</a>
-  <a href="#matrix">Matrix</a>
-  <a href="#gates">Gates</a>
+  <a href="#decide">Decide</a>
+  <a href="#plan">Plan</a>
   <a href="#projects">Projects</a>
-  <a href="#markets">Markets</a>
-  <a href="#claims">Claims</a>
-  <a href="#verify">Verified</a>
-  <a href="#record">Record</a>
   <a href="#requests">Requests</a>
-  <a href="#evidence">Evidence</a>
-  <a href="#sources">Sources</a>
-  <a href="#method">Method</a>
+  <a href="#method">How this was checked</a>
   <a href="./" class="sib">Decision brief &rarr;</a>
   </div>
   <span class="dl"><b>26</b> days to 30 Sep</span>
 </div></nav>
 
 <div class="wrap">
-<header>
-  <span class="hero-tag">As at 3 September 2026 · fourteen offerings</span>
-  <h1>Fourteen EB-5 offerings,<br>read against their own documents.</h1>
-  <div class="verdict">
-    <p class="lead">Six are dead on their own contracts; three stay live, each turning on one obtainable fact.</p>
-    <p>Full offering documents — the signed contracts, not the brochures — arrived for five projects and were read line by line, so this board now compares what the paperwork says rather than what was advertised. That reading killed six outright: a denial refund promised by a company with no assets, a job count where 54% comes from 2028 milk sales, an offering whose recipient entity is never named. Two more arrived on 2 September from a sponsor not previously on this board, and they sit at the opposite extreme: sixty-five claims in one email were graded against independent records, seven of them contradicted outright, and not a single offering document has been produced for either. What survives still has to answer two separate questions that must never be blended into one score — will the green card arrive, and will the $800,000 come back — and nothing on the board answers both well. Note too that the real clock is not the projects: his own source-of-funds file across four donors is the long pole, and since 5 August USCIS can deny a thin filing outright with no chance to fix it.</p>
-    <p><b>008 Spring Haven</b> turns on one document — the guarantor's balance sheet, which is a literally blank page in his own file — and that single unknown number is the whole of his money protection, because the loan itself is unsecured. <b>002 Pointe Vista</b> is the rural hedge and needs his place in the investor queue in writing, since the jobs already built cover the first 46 investors and nobody after them. <b>006 Brandon</b> is the only formal pursue on the board and needs evidence of a $23m construction loan nobody has yet committed to, because that loan supplies its entire job cushion. <b>003 Currahee</b> stays on watch only if the sponsor grants the fund a lien it does not hold today. <b>011 Skjol at Avon</b> is the only project whose rural status has been independently confirmed against the OMB delineation and the census, which is the one thing an India-born applicant most needs &mdash; and it is also the only project here with no contract of any kind, sitting behind a recorded $138,000,000 first lien. <b>012 The Aletto</b> is better corroborated on land, lender and job cushion, and is in the 10% reserve rather than the 20% — and the visa bulletin published mid-September decides whether 008 and 006, both in the smaller 10% category, can still be filed at all.</p>
-  </div>
-  <div class="facts"><div class="fact"><div class="n">148</div><div class="l">documents read</div><div class="s">every page machine-readable, including scans</div></div><div class="fact"><div class="n">6</div><div class="l">approval notices in hand</div><div class="s">not claims — the agency documents themselves</div></div><div class="fact"><div class="n">9</div><div class="l">securities filings</div><div class="s">all divide cleanly by $800,000</div></div><div class="fact"><div class="n">31</div><div class="l">best capital score</div><div class="s">out of 65. Nothing here is good</div></div><div class="fact"><div class="n">47</div><div class="l">best petition score</div><div class="s">out of 65, on a different project</div></div><div class="fact"><div class="n">3</div><div class="l">still live</div><div class="s">none signable today; six are dead on their own contracts</div></div></div>
+<header class="tight">
+  <span class="hero-tag">As at 3 September 2026 · fourteen offerings read against their own documents</span>
+  <h1>Seven are dead on their own contracts; four stay live, each turning on one obtainable fact.</h1>
 </header>
 
+<section id="decide"><div class="wrap">
+  <div class="dcall">
+    <div class="dc-l">
+      <span class="eyebrow">The decision</span>
+      <p class="dc-call">Choose between <b>008 Spring Haven</b> and <b>002 Pointe Vista</b>.</p>
+      <p class="dc-why">Spring Haven is the best-balanced pair on the board and the only offering where most of the petition risk is already spent before the money moves. Pointe Vista is the rural hedge, and it is a hedge against something that is <b>not yours to control</b>.</p>
+    </div>
+    <div class="dc-r"><b>26</b><span>days to<br>30 Sep</span></div>
+  </div>
+
+  <div class="dbranch">
+    <div class="bh"><span class="bwhen">~15 Sep</span>
+      <b>October 2026 <abbr title="The State Department&#x27;s monthly notice of which visa queues are open. Published mid-month for the following month.">Visa Bulletin</abbr></b><span class="bnote">Day 11 of 26. Nobody can bring it forward, and no sponsor can answer it.</span></div>
+    <div class="forks"><div class="fork"><div class="fq">The 10% reserve stays Current for India</div><div class="fa"><span class="pid">008</span> <b>Spring Haven</b></div><p class="fw">File Spring Haven concurrently. 31 capital, 44 petition &mdash; the best of both on this board, and 1,776.9 qualifying jobs are already built against 1,000 required.</p></div><div class="fork"><div class="fq">A cut-off date appears for India in the 10% reserve</div><div class="fa"><span class="pid">002</span> <b>Pointe Vista</b></div><p class="fw">Spring Haven and Brandon both leave the concurrent route &mdash; both are 10% high-unemployment. The rural 20% pair is what remains.</p></div></div>
+    <p class="bcav">September 2026 has all three reserves <b>Current</b> for India and Unreserved unavailable. Carried from the corpus, <b>not re-verified this session</b> &mdash; travel.state.gov refuses this network. Check it before relying on it.</p>
+  </div>
+
+  <table class="dlive">
+    <tr><th></th><th></th><th>Live candidate</th><th>Capital</th><th>Petition</th><th>Open</th>
+        <th>The one fact still blocking it</th></tr>
+    <tr><td class="rk">1</td><td class="pid">008</td><td class="nm"><a href="#p008">Spring Haven</a><span class="st">10% reserved</span></td><td class="sc"><span class="mb"><b>31</b><span class="mbt">/65</span><i class="mbb"><s class="c" style="width:48%"></s></i></span></td><td class="sc"><span class="mb"><b>44</b><span class="mbt">/65</span><i class="mbb"><s class="p" style="width:68%"></s></i></span></td><td class="op">11</td><td class="bl">The guarantor&rsquo;s balance sheet is a <b>blank placeholder page</b> in the signed guaranty, and the loan is unsecured.</td></tr><tr><td class="rk">2</td><td class="pid">002</td><td class="nm"><a href="#p002">Hard Rock Pointe Vista</a><span class="st">20% reserved</span></td><td class="sc"><span class="mb"><b>23</b><span class="mbt">/65</span><i class="mbb"><s class="c" style="width:35%"></s></i></span></td><td class="sc"><span class="mb"><b>34</b><span class="mbt">/65</span><i class="mbb"><s class="p" style="width:52%"></s></i></span></td><td class="op">10</td><td class="bl">The jobs already built cover the <b>first 46 investors</b> and nobody after them. Your place in that queue is not in writing.</td></tr><tr><td class="rk">3</td><td class="pid">006</td><td class="nm"><a href="#p006">Brandon Multifamily — Loan</a><span class="st">10% reserved</span></td><td class="sc"><span class="mb"><b>24</b><span class="mbt">/65</span><i class="mbb"><s class="c" style="width:37%"></s></i></span></td><td class="sc"><span class="mb"><b>35</b><span class="mbt">/65</span><i class="mbb"><s class="p" style="width:54%"></s></i></span></td><td class="op">10</td><td class="bl">The whole job cushion rests on a <b>$23m construction loan</b> that nobody has committed to.</td></tr><tr><td class="rk">4</td><td class="pid">014</td><td class="nm"><a href="#p014">Texas Infrastructure Holdings</a><span class="st">20% reserved</span></td><td class="sc"><span class="mb none">not scored</span></td><td class="sc"><span class="mb none">not scored</span></td><td class="op">3</td><td class="bl">USCIS approved <b>197 investors</b>; the offering sells <b>271</b>. And the fund must subordinate its lien below $100m raised &mdash; $50.4m is raised.</td></tr>
+  </table>
+  <p class="dtoday"><b>Every one of those four is free and none needs a lawyer.</b> All four are already written as questions in the three desk emails below, ready to copy and send.</p>
+</div></section>
+<div class="wrap"><div class="facts"><div class="fact"><div class="n">148</div><div class="l">documents read</div><div class="s">every page machine-readable, including scans</div></div><div class="fact"><div class="n">6</div><div class="l">approval notices in hand</div><div class="s">not claims — the agency documents themselves</div></div><div class="fact"><div class="n">9</div><div class="l">securities filings</div><div class="s">all divide cleanly by $800,000</div></div><div class="fact"><div class="n">31</div><div class="l">best capital score</div><div class="s">out of 65. Nothing here is good</div></div><div class="fact"><div class="n">47</div><div class="l">best petition score</div><div class="s">out of 65, on a different project</div></div><div class="fact"><div class="n">3</div><div class="l">still live</div><div class="s">none signable today; six are dead on their own contracts</div></div></div></div>
+<section id="plan"><div class="wrap">
+  <span class="eyebrow">Everything left, in order</span>
+  <h2>The 26 days</h2>
+  <p class="small" style="max-width:74ch">Sorted by date, tagged by who owns it. <b>Nine of these are
+  yours alone</b> &mdash; free, immediate, and blocked by nobody. Two need a lawyer instructed. Four are
+  published events that happen whatever you do.</p>
+  <div class="rail"><div class=""><div class="rd">Today</div><div class="rw">4 Sep &mdash; 26 days left</div></div><div class="hot"><div class="rd">~15 Sep</div><div class="rw">October <abbr title="The State Department&#x27;s monthly notice of which visa queues are open. Published mid-month for the following month.">Visa Bulletin</abbr>. Decides whether the 10% reserve stays open to India.</div></div><div class="hot"><div class="rd">17 Sep</div><div class="rw">Last day for the current <abbr title="The application that makes him a permanent resident from inside the US, so he never sits for a consular interview. Only a reserved category lets him file it alongside the I-526E.">I-485</abbr> edition. No grace period.</div></div><div class=""><div class="rd">by 22 Sep</div><div class="rw">Wire, on a nine-business-day transfer.</div></div><div class="hot"><div class="rd">30 Sep</div><div class="rw"><abbr title="His own investor petition. It must be received by USCIS on or before 30 September 2026.">I-526E</abbr> must be <b>received</b>.</div></div></div>
+  <table class="acts">
+    <tr><th>When</th><th>Do this</th><th>Owner</th><th>If it slips</th></tr>
+    <tr><td class="w">today</td><td class="dd">Register a CourtListener API token. Free, needs only an email.</td><td><span class="ochip own">You</span></td><td class="sl">37 federal-litigation checks across every sponsor, developer and guarantor on this board stay <b>void, not clean</b>. The substitute mirror used so far was measured at 0&ndash;25% recall, median about 5%, so every hit from it is real and not one zero is an absence.</td></tr><tr><td class="w">today</td><td class="dd">Open a PACER account. Free to register; most searches cost cents.</td><td><span class="ochip own">You</span></td><td class="sl">No nationwide party search. Three EB5AN matters found this week can be read no further than their docket headers.</td></tr><tr><td class="w">today</td><td class="dd">Open a Coweta County records account. Free.<br><span class="pchip">008</span></td><td><span class="ochip own">You</span></td><td class="sl">The two Spring Haven security deeds cannot be read, so the face amount securing the senior facility stays unknown on the top-ranked offering.</td></tr><tr><td class="w">by 6 Sep</td><td class="dd">Send the EB5AN desk. One message, five funds, 30 questions.<br><span class="pchip">008</span><span class="pchip">002</span><span class="pchip">006</span><span class="pchip">003</span><span class="pchip">007</span></td><td><span class="ochip own">You</span></td><td class="sl">Nothing arrives before the wire date. This is the largest single block of unanswered questions on the board and it covers three of the four live candidates.</td></tr><tr><td class="w">by 6 Sep</td><td class="dd">Send the EB5 United desk. Two offerings, 7 questions.<br><span class="pchip">014</span><span class="pchip">013</span></td><td><span class="ochip own">You</span></td><td class="sl">Texas Infrastructure is wired with its investor-count question open &mdash; the offering sells 271 slots against an approval for 197.</td></tr><tr><td class="w">by 6 Sep</td><td class="dd">Send the EB5 Capital desk. Two offerings, 9 questions.<br><span class="pchip">011</span><span class="pchip">012</span></td><td><span class="ochip own">You</span></td><td class="sl">Both stay in <i>needs work</i>. Neither has produced an offering document of any kind.</td></tr><tr><td class="w">by 8 Sep</td><td class="dd">Instruct independent immigration counsel &mdash; gate G5.</td><td><span class="ochip law">Your lawyer</span></td><td class="sl">G5 is the one gate <b>no sponsor can close</b>: whether anyone is paying the lawyer who advises on the petition. It is open on thirteen of fourteen offerings.</td></tr><tr><td class="w">by 8 Sep</td><td class="dd">Ask counsel the public-charge timing question.</td><td><span class="ochip law">Your lawyer</span></td><td class="sl">The rescission of the 2022 public-charge rule takes effect <b>18 September</b> and restores broader officer discretion. Whether the governing framework attaches at the filing date or the adjudication date decides whether filing before that date is worth anything. Nothing in this research answers it and it should not be guessed.</td></tr><tr><td class="w">by 12 Sep</td><td class="dd">Source-of-funds file complete and reviewed.</td><td><span class="ochip own">You</span></td><td class="sl"><b>The long pole, and the least reversible.</b> This is the part of the petition that depends on no sponsor and cannot be repaired after filing.</td></tr><tr class="milestone"><td class="w fix">~15 Sep</td><td class="dd">October 2026 Visa Bulletin publishes &mdash; mid-month, not on 1 October.<br><span class="pchip">008</span><span class="pchip">006</span><span class="pchip">002</span><span class="pchip">014</span></td><td><span class="ochip nob">Nobody</span></td><td class="sl"><b>The branch that decides half the board.</b> A cut-off date for India in the 10% high-unemployment reserve removes Spring Haven and Brandon from concurrent filing. Pointe Vista and Texas Infrastructure are rural 20% and survive it. Nobody can bring this forward.</td></tr><tr><td class="w">15&ndash;17 Sep</td><td class="dd">Decide. One offering.</td><td><span class="ochip own">You</span></td><td class="sl"></td></tr><tr class="milestone"><td class="w fix">17 Sep</td><td class="dd">Last day USCIS accepts the 01/20/25 edition of Form I-485.</td><td><span class="ochip nob">Nobody</span></td><td class="sl"><b>Not a filing deadline &mdash; a form-version switchover.</b> A filing made on or after 18 September is fine on the new 09/18/26 edition, already published in preview. The risk is narrower: a package prepared on the old edition and filed on or after 18 September is <b>rejected</b>, and a rejection is not a filing. Pick one edition and build to it.</td></tr><tr class="milestone"><td class="w fix">18 Sep</td><td class="dd">Public Charge Ground of Inadmissibility rule takes effect.</td><td><span class="ochip nob">Nobody</span></td><td class="sl">The 2022 rule is rescinded and officer discretion widens. Same day as the form change &mdash; they are one event, not two.</td></tr><tr><td class="w">by 22 Sep</td><td class="dd">Wire $800,000 plus the $80,000 administration fee.</td><td><span class="ochip own">You</span></td><td class="sl">Nine business days is the India transfer time. On all five EB5AN funds escrow releases on <b>filing</b>, not on approval, and the $80,000 is forfeited in full on a source-of-funds denial.</td></tr><tr class="milestone"><td class="w fix">30 Sep</td><td class="dd">Form I-526E must be <b>received</b> by USCIS.</td><td><span class="ochip nob">Nobody</span></td><td class="sl"><b>The operative deadline.</b> Miss it and the concurrent I-485 route goes with it &mdash; which is the consular interview.</td></tr>
+  </table>
+  <p class="deriv">Dates marked <b>by</b> are back-calculated, not published. The wire date is 30 September minus nine business days, which is the India-to-US transfer time recorded in the decisions ledger; everything else works backwards from the wire date and from the mid-September Visa Bulletin. Dates in <b>bold</b> are published by USCIS or the State Department and are quoted in the federal-rules note.</p>
+</div></section>
 <section id="primer">
   <div class="sechead"><h2>What this market is, and what goes wrong in it</h2>
   <p>Written for someone meeting EB-5 for the first time. Every red flag below is one that turned up in
@@ -624,8 +755,15 @@ h4.sevhead:first-child{margin-top:14px}
 
 <section id="answer">
   <div class="sechead"><h2>How to read this</h2>
-  <p>Nothing here recommends a decision. It sets out what has been verified, what has not, and what each
-  unanswered question would cost if it turned out badly — so the judgement stays with the reader.</p></div>
+  <p>The decision is at the top. This section is the reasoning under it: what has been verified, what has
+  not, and what each unanswered question would cost if it turned out badly.</p></div>
+
+  <div class="callout">
+    <span class="eyebrow">Where the board stands</span>
+    <p class="small" style="color:var(--ink2)">Full offering documents — the signed contracts, not the brochures — arrived for five projects and were read line by line, so this board now compares what the paperwork says rather than what was advertised. That reading killed six outright: a denial refund promised by a company with no assets, a job count where 54% comes from 2028 milk sales, an offering whose recipient entity is never named. Two more arrived on 2 September from a sponsor not previously on this board, and they sit at the opposite extreme: sixty-five claims in one email were graded against independent records, seven of them contradicted outright, and not a single offering document has been produced for either. What survives still has to answer two separate questions that must never be blended into one score — will the green card arrive, and will the $800,000 come back — and nothing on the board answers both well. Note too that the real clock is not the projects: his own source-of-funds file across four donors is the long pole, and since 5 August USCIS can deny a thin filing outright with no chance to fix it.</p>
+    <p class="small" style="color:var(--ink2);margin-bottom:0"><b>008 Spring Haven</b> turns on one document — the guarantor's balance sheet, which is a literally blank page in his own file — and that single unknown number is the whole of his money protection, because the loan itself is unsecured. <b>002 Pointe Vista</b> is the rural hedge and needs his place in the investor queue in writing, since the jobs already built cover the first 46 investors and nobody after them. <b>006 Brandon</b> is the only formal pursue on the board and needs evidence of a $23m construction loan nobody has yet committed to, because that loan supplies its entire job cushion. <b>003 Currahee</b> stays on watch only if the sponsor grants the fund a lien it does not hold today. <b>011 Skjol at Avon</b> is the only project whose rural status has been independently confirmed against the OMB delineation and the census, which is the one thing an India-born applicant most needs &mdash; and it is also the only project here with no contract of any kind, sitting behind a recorded $138,000,000 first lien. <b>012 The Aletto</b> is better corroborated on land, lender and job cushion, and is in the 10% reserve rather than the 20% — and the visa bulletin published mid-September decides whether 008 and 006, both in the smaller 10% category, can still be filed at all.</p>
+  </div>
+
   <details class="gloss"><summary>Plain English &mdash; 86 terms used on this page</summary><div class="gbody"><p class="xs" style="margin:0 0 4px">Every term of art here is also underlined at its first use in each section; hover it for the same definition.</p><h4>Immigration machinery</h4><dl><dt>NCE<i>new commercial enterprise</i></dt><dd>The fund he buys a unit in. His petition names it, and it builds nothing itself.</dd><dt>JCE<i>job-creating entity</i></dt><dd>The company that actually spends the money, and whose spending the jobs are counted from.</dd><dt>I-526E</dt><dd>His own investor petition. It must be received by USCIS on or before 30 September 2026.</dd><dt>I-956F</dt><dd>The sponsor&#x27;s application for the project itself. Approved, it binds USCIS when his own petition is read — subject to five carve-outs.</dd><dt>I-829</dt><dd>The petition filed two years later that turns the conditional green card into a permanent one. A job shortfall kills him here, not earlier.</dd><dt>I-485</dt><dd>The application that makes him a permanent resident from inside the US, so he never sits for a consular interview. Only a reserved category lets him file it alongside the I-526E.</dd><dt>I-797 / I-797C</dt><dd>The notices USCIS sends. An I-797 with &quot;Approval&quot; on its face is the approval; an I-797C is only a receipt. Read the notice type.</dd><dt>I-956G</dt><dd>The regional centre&#x27;s annual report to USCIS about itself — the only regular filing in which it reports on its own conduct.</dd><dt>I-956H</dt><dd>The disclosures every person controlling a regional centre must file about their own record.</dd><dt>Conditional green card</dt><dd>The first green card, valid two years. The I-829 is what makes it permanent.</dd><dt>Priority date</dt><dd>The day USCIS receives his petition. It fixes his place in every queue after that — visa numbers, and in most of these funds, jobs.</dd><dt>Set-aside / reserved category</dt><dd>20% of EB-5 visas are held for rural projects, 10% for high-unemployment ones. The unreserved category is closed to an India-born applicant who wants to stay in the US.</dd><dt>TEA<i>targeted employment area</i></dt><dd>The designation that makes the price $800,000 rather than $1,050,000. Separate from the set-aside, and it does not decide his queue.</dd><dt>HUA</dt><dd>USCIS&#x27;s own name for the 10% high-unemployment set-aside.</dd><dt>Visa Bulletin</dt><dd>The State Department&#x27;s monthly notice of which visa queues are open. Published mid-month for the following month.</dd><dt>Final Action chart</dt><dd>The half of the Visa Bulletin that says whether a green card is actually available. UNAVAILABLE means he cannot file.</dd><dt>Cut-off date</dt><dd>A date on that chart. If one appears for India in his category before he files, he can no longer file the I-485 alongside the petition.</dd><dt>Two-year at-risk period<i>also on this page: sustainment period, holding requirement, holding clock</i></dt><dd>His $800,000 must stay invested and genuinely at risk for two years from the day it reaches the job-creating entity. One rule, five names.</dd><dt>Redeployment</dt><dd>Moving his money into a different investment when the loan is repaid early, so the two-year clock is not broken. Whoever picks the replacement matters.</dd><dt>Source of funds</dt><dd>The paper trail proving every dollar was lawfully earned. His file across four donors is the longest job on the critical path.</dd><dt>Adjustment of status</dt><dd>Becoming a permanent resident without leaving the US. The alternative is a consular interview abroad.</dd><dt>RIMS II / IMPLAN</dt><dd>Two economic models that convert dollars of spending into a job number. Different models, different multipliers, different answers.</dd><dt>Multiplier</dt><dd>How many jobs a model credits per dollar spent, by industry and region.</dd><dt>Direct / indirect / induced</dt><dd>Direct: people the project pays. Indirect: jobs at its suppliers. Induced: jobs created when those wages are spent. Only direct jobs are real people the project hires.</dd><dt>Leakage</dt><dd>Money that leaves the US economy — imported equipment, out-of-region spending. It creates no countable job.</dd><dt>Expenditure jobs / revenue jobs</dt><dd>Jobs counted from money already spent, versus jobs counted from sales that have not happened. (Already explained clearly on the page — keep it.)</dd></dl><h4>Securities</h4><dl><dt>Form D</dt><dd>The short public notice a private offering files with the SEC within fifteen days of its first sale. It states the raise size and how much has sold.</dd><dt>CIK</dt><dd>The SEC&#x27;s number for a filer. Search it and every filing they have made appears.</dd><dt>Accession number</dt><dd>The SEC&#x27;s number for one individual filing.</dd><dt>Regulation D / 506(c)</dt><dd>The exemption that lets an offering be sold without SEC registration, to accredited investors only.</dd><dt>NASAA</dt><dd>The state securities regulators&#x27; shared filing system — where state notice filings appear.</dd></dl><h4>The money structure</h4><dl><dt>Capital stack</dt><dd>Everyone who put money into the project, listed in the order they get paid back.</dd><dt>Senior / subordinated / junior</dt><dd>Where a claim sits in that order. Subordinated means everyone above is paid in full first.</dd><dt>Mezzanine</dt><dd>The layer between the bank loan and the owners. Paid after the bank, before them.</dd><dt>Preferred equity</dt><dd>Ownership, not a loan. Nobody owes him the money back, and there is no default he can act on.</dd><dt>Waterfall</dt><dd>The order cash is paid out in. Equity sits at the bottom, so it is what disappears first.</dd><dt>Cap rate</dt><dd>A property&#x27;s annual income divided by its price. A higher cap rate means the same income sells for less.</dd><dt>bp<i>basis point</i></dt><dd>One hundredth of a percentage point. 200bp is two percentage points.</dd><dt>NOI</dt><dd>A property&#x27;s annual income after running costs and before financing. The top half of the cap-rate sum.</dd><dt>RevPAR</dt><dd>Hotel revenue per available room. What hotel values move with, and the first line a recession cuts.</dd><dt>ADR</dt><dd>Average daily room rate.</dd><dt>First-loss</dt><dd>The money wiped out before anyone else loses a cent — usually the sponsor&#x27;s own equity.</dd><dt>Permanent takeout</dt><dd>The long-term loan that repays the construction loan once the building is finished and let.</dd><dt>Stabilised</dt><dd>Finished, let and earning at a steady rate. Most exits require it first.</dd><dt>Revolver</dt><dd>A credit line the borrower can draw down and repay repeatedly.</dd><dt>Cash sweep</dt><dd>A term forcing spare cash to repay debt before anyone takes a distribution.</dd><dt>Sources-and-uses</dt><dd>The one page showing where every dollar comes from and what it buys.</dd><dt>Pro forma</dt><dd>The sponsor&#x27;s own forecast accounts.</dd><dt>Cost basis</dt><dd>What the project cost to buy and build. A &quot;cushion over cost basis&quot; is the gap between that and the expected sale price.</dd><dt>C-PACE</dt><dd>A property-improvement loan collected through the property tax bill — so it is paid before every mortgage and cannot be pushed back.</dd><dt>TIF</dt><dd>Public money repaid out of the extra tax the finished project generates.</dd><dt>NMTC</dt><dd>A federal tax subsidy for investment in low-income areas.</dd><dt>Preferred return, cumulative</dt><dd>A stated annual return that accrues whether or not it is paid, and must be settled before capital is returned.</dd></dl><h4>Security and legal</h4><dl><dt>Lien</dt><dd>A registered claim over an asset. Without one he is an ordinary creditor holding a piece of paper.</dd><dt>Perfected / recorded</dt><dd>Filed in the public register. An unrecorded mortgage binds nobody.</dd><dt>UCC-1</dt><dd>The one-page filing that puts a claim over a company&#x27;s non-property assets on the public record. Filed in the state where the company was formed.</dd><dt>Security deed / deed of trust / mortgage</dt><dd>Three names, by state, for the same thing: a registered claim over land.</dd><dt>Collateral assignment</dt><dd>Handing an existing claim to somebody else — here, from the borrower to his fund.</dd><dt>Intercreditor / subordination agreement</dt><dd>The contract between lenders setting who gets paid first. Without it, priority is whatever the loose documents happen to say.</dd><dt>Standstill</dt><dd>A clause barring a lender from suing while a more senior lender is unpaid. The reason a real guarantee can be useless in the years the risk is live.</dd><dt>Joinder</dt><dd>A one-page signature making him a party to a contract, so he can sue on it himself.</dd><dt>Encumbrance</dt><dd>Anything already registered against the land.</dd><dt>Mechanics&#x27; lien</dt><dd>A contractor&#x27;s automatic claim for unpaid work. It outranks most lenders.</dd><dt>Accelerate</dt><dd>Demand the whole loan back at once after a default.</dd><dt>Escrow agent</dt><dd>The bank holding his money until the release conditions are met.</dd><dt>Fund administrator</dt><dd>The outside firm that must co-sign payments, so the sponsor cannot move investor money alone.</dd><dt>General partner / limited partner</dt><dd>The general partner runs the fund and makes every decision. He would be a limited partner — money in, no control.</dd><dt>Side letter</dt><dd>A one-off written agreement changing the deal terms for him alone.</dd><dt>Title commitment vs title policy</dt><dd>A commitment is what an insurer says it will insure; the policy is the actual cover. The page treats the difference as decisive — it is.</dd><dt>Chapter 11</dt><dd>Court-supervised reorganisation. The company keeps trading while a judge decides who gets paid what.</dd><dt>Arm&#x27;s length</dt><dd>A deal between genuinely independent parties. Where one man signs both sides, it is not.</dd><dt>GAAP</dt><dd>The standard US accounting rules a balance sheet must be prepared under.</dd><dt>EBITDA</dt><dd>Earnings before interest, tax, depreciation and amortisation — a profit figure that excludes the cost of the debt.</dd><dt>CAGR</dt><dd>Compound annual growth rate. −1.4% CAGR means shrinking 1.4% a year.</dd><dt>MAI</dt><dd>The recognised professional designation for a commercial appraiser.</dd><dt>PIP</dt><dd>A hotel brand&#x27;s required renovation programme before it will let its name stay on the door.</dd><dt>Key</dt><dd>One hotel room. A &quot;212-key hotel&quot; has 212 rooms.</dd><dt>Topped out</dt><dd>The frame is up to its full height. It does not mean finished.</dd><dt>Vertical construction</dt><dd>Building upward, as against site preparation and groundwork.</dd><dt>Offtake agreement</dt><dd>A signed commitment from a buyer to take the product — here, flour.</dd><dt>CRE</dt><dd>Commercial real estate.</dd><dt>FRED</dt><dd>The Federal Reserve&#x27;s public data service. The codes are its series identifiers, so every figure can be re-pulled.</dd><dt>Sahm rule</dt><dd>A standard early-warning gauge for recession.</dd><dt>ACS</dt><dd>The Census Bureau&#x27;s American Community Survey — the unemployment data a high-unemployment designation is computed from.</dd><dt>APA</dt><dd>The Administrative Procedure Act — the statute used to sue a federal agency for unreasonable delay.</dd><dt>RIA</dt><dd>The 2022 EB-5 Reform and Integrity Act — the current rules. &quot;Post-RIA&quot; means since then.</dd></dl></div></details>
 
   <div class="callout">
