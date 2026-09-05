@@ -679,7 +679,8 @@ tr.vsplit .eyebrow{display:block;margin-bottom:2px}
 /* --- one-screen ledger ------------------------------------------------------------------------- */
 
 /* Contents spine. Typography is the whole affordance -- no boxes, no icons, one hairline per row. */
-nav.spine{margin:34px 0 6px}
+nav.spine{margin:34px 0 6px;position:static;z-index:auto;background:none;backdrop-filter:none;
+  border-bottom:0;box-shadow:none}
 nav.spine .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
 nav.spine a{display:flex;gap:14px;align-items:baseline;padding:9px 0;border:0;
   border-bottom:1px solid var(--line2);text-decoration:none}
@@ -945,7 +946,7 @@ h4.sevhead:first-child{margin-top:14px}
   hopeless on the other.</p></div>
   <div class="tw"><table>
     <thead><tr><th>#</th><th>Project</th><th>Standing</th><th>Category</th><th>Structure</th>
-    <th class="num">Capital</th><th class="num">Petition</th><th class="num">Gates open</th><th class="num">Questions</th></tr></thead>
+    <th class="num">Capital</th><th class="num">Petition</th><th class="num">Gates<br><span class="xs">unproven</span></th><th class="num">Questions<br><span class="xs">unanswered</span></th></tr></thead>
     <tbody><tr>
       <td class="pid">008</td>
       <td><a href="#p008"><b>Spring Haven</b></a><br><span class="xs">EB5AN</span></td>
@@ -1131,8 +1132,8 @@ h4.sevhead:first-child{margin-top:14px}
         <span class="pill neutral">High unemployment · 10%</span>
         <span class="pill neutral">Unsecured loan</span>
         <span class="pill neutral">$80,000,000</span>
-        <span class="pill neutral">13 open</span>
-        <span class="pill accentpill">8 to send</span>
+        <span class="pill neutral">13 unanswered</span>
+        <span class="pill accentpill">8 questions written</span>
       </span>
     </span>
     <span class="chev">▶</span>
@@ -1185,8 +1186,8 @@ h4.sevhead:first-child{margin-top:14px}
         <span class="pill neutral">Rural · 20%</span>
         <span class="pill neutral">Mortgage loan through a limited partnership unit</span>
         <span class="pill neutral">$200,000,000</span>
-        <span class="pill neutral">10 open</span>
-        <span class="pill accentpill">7 to send</span>
+        <span class="pill neutral">10 unanswered</span>
+        <span class="pill accentpill">7 questions written</span>
       </span>
     </span>
     <span class="chev">▶</span>
@@ -1239,8 +1240,8 @@ h4.sevhead:first-child{margin-top:14px}
         <span class="pill neutral">High unemployment · 10%</span>
         <span class="pill neutral">Subordinated loan (the EB-5 money is repaid only…</span>
         <span class="pill neutral">$25,600,000</span>
-        <span class="pill neutral">10 open</span>
-        <span class="pill accentpill">6 to send</span>
+        <span class="pill neutral">10 unanswered</span>
+        <span class="pill accentpill">6 questions written</span>
       </span>
     </span>
     <span class="chev">▶</span>
@@ -1293,8 +1294,8 @@ h4.sevhead:first-child{margin-top:14px}
         <span class="pill neutral">Rural · 20%</span>
         <span class="pill neutral">Senior secured loan, first lien deeds of trust on…</span>
         <span class="pill neutral">$216,800,000</span>
-        <span class="pill neutral">8 open</span>
-        <span class="pill accentpill">7 to send</span>
+        <span class="pill neutral">8 unanswered</span>
+        <span class="pill accentpill">7 questions written</span>
       </span>
     </span>
     <span class="chev">▶</span>
@@ -1347,8 +1348,8 @@ h4.sevhead:first-child{margin-top:14px}
         <span class="pill neutral">Rural · 20%</span>
         <span class="pill neutral">Unsecured loan</span>
         <span class="pill neutral">$70,400,000</span>
-        <span class="pill neutral">11 open</span>
-        <span class="pill accentpill">6 to send</span>
+        <span class="pill neutral">11 unanswered</span>
+        <span class="pill accentpill">6 questions written</span>
       </span>
     </span>
     <span class="chev">▶</span>
@@ -1401,8 +1402,8 @@ h4.sevhead:first-child{margin-top:14px}
         <span class="pill neutral">Rural (claimed dual with high unemployment) · 20%</span>
         <span class="pill neutral">Described in one word: &quot;EB-5 mezzanine loan&quot;</span>
         <span class="pill neutral">$120,000,000</span>
-        <span class="pill neutral">7 open</span>
-        <span class="pill accentpill">5 to send</span>
+        <span class="pill neutral">7 unanswered</span>
+        <span class="pill accentpill">5 questions written</span>
       </span>
     </span>
     <span class="chev">▶</span>
@@ -1455,8 +1456,8 @@ h4.sevhead:first-child{margin-top:14px}
         <span class="pill neutral">High unemployment · 10%</span>
         <span class="pill neutral">Not disclosed</span>
         <span class="pill neutral">$56,000,000</span>
-        <span class="pill neutral">7 open</span>
-        <span class="pill accentpill">4 to send</span>
+        <span class="pill neutral">7 unanswered</span>
+        <span class="pill accentpill">4 questions written</span>
       </span>
     </span>
     <span class="chev">▶</span>
@@ -1509,8 +1510,8 @@ h4.sevhead:first-child{margin-top:14px}
         <span class="pill neutral">Rural · 20%</span>
         <span class="pill neutral">Senior loan to RRE25 Cormont LLC, secured on five…</span>
         <span class="pill neutral">$524,800,000</span>
-        <span class="pill neutral">4 open</span>
-        <span class="pill accentpill">3 to send</span>
+        <span class="pill neutral">4 unanswered</span>
+        <span class="pill accentpill">3 questions written</span>
       </span>
     </span>
     <span class="chev">▶</span>
@@ -1563,8 +1564,8 @@ h4.sevhead:first-child{margin-top:14px}
         <span class="pill neutral">High unemployment · 10%</span>
         <span class="pill neutral"><abbr title="Ownership, not a loan. Nobody owes him the money back, and there is no default he can act on.">Preferred equity</abbr>, and it is fourth and last in line</span>
         <span class="pill neutral">$28,000,000</span>
-        <span class="pill neutral">9 open</span>
-        <span class="pill accentpill">2 to send</span>
+        <span class="pill neutral">9 unanswered</span>
+        <span class="pill accentpill">2 questions written</span>
       </span>
     </span>
     <span class="chev">▶</span>
@@ -1617,8 +1618,8 @@ h4.sevhead:first-child{margin-top:14px}
         <span class="pill neutral">Rural · 20%</span>
         <span class="pill neutral">Unsecured loan</span>
         <span class="pill neutral">$28,000,000</span>
-        <span class="pill neutral">9 open</span>
-        <span class="pill accentpill">2 to send</span>
+        <span class="pill neutral">9 unanswered</span>
+        <span class="pill accentpill">2 questions written</span>
       </span>
     </span>
     <span class="chev">▶</span>
@@ -1671,8 +1672,8 @@ h4.sevhead:first-child{margin-top:14px}
         <span class="pill neutral">Rural · 20%</span>
         <span class="pill neutral">Subordinated loan</span>
         <span class="pill neutral">$27,200,000</span>
-        <span class="pill neutral">8 open</span>
-        <span class="pill accentpill">3 to send</span>
+        <span class="pill neutral">8 unanswered</span>
+        <span class="pill accentpill">3 questions written</span>
       </span>
     </span>
     <span class="chev">▶</span>
@@ -1725,8 +1726,8 @@ h4.sevhead:first-child{margin-top:14px}
         <span class="pill neutral">Rural (claimed) · 20%</span>
         <span class="pill neutral">Undisclosed</span>
         <span class="pill neutral">$71.2m loan + $32.8m equity</span>
-        <span class="pill neutral">9 open</span>
-        <span class="pill accentpill">3 to send</span>
+        <span class="pill neutral">9 unanswered</span>
+        <span class="pill accentpill">3 questions written</span>
       </span>
     </span>
     <span class="chev">▶</span>
@@ -1779,8 +1780,8 @@ h4.sevhead:first-child{margin-top:14px}
         <span class="pill neutral">Rural (claimed) · 20%</span>
         <span class="pill neutral">Preferred equity, not a loan — $51.2m, 63.1% of the…</span>
         <span class="pill neutral">$51,200,000</span>
-        <span class="pill neutral">9 open</span>
-        <span class="pill accentpill">3 to send</span>
+        <span class="pill neutral">9 unanswered</span>
+        <span class="pill accentpill">3 questions written</span>
       </span>
     </span>
     <span class="chev">▶</span>
@@ -1833,8 +1834,8 @@ h4.sevhead:first-child{margin-top:14px}
         <span class="pill neutral">Not stated · —</span>
         <span class="pill neutral">None</span>
         <span class="pill neutral">Not stated</span>
-        <span class="pill neutral">9 open</span>
-        <span class="pill accentpill">2 to send</span>
+        <span class="pill neutral">9 unanswered</span>
+        <span class="pill accentpill">2 questions written</span>
       </span>
     </span>
     <span class="chev">▶</span>
