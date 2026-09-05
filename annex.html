@@ -786,6 +786,11 @@ table.mtab td.mcash{width:13%;font:500 12.5px/1.5 var(--mono);color:var(--ink)}
 .rk-call{background:var(--warn-bg);color:var(--warn)}
 .rch p{font-size:12.5px;line-height:1.58;color:var(--ink2);margin:0 0 9px;text-wrap:pretty}
 .rchq{border-left:2px solid var(--accent);padding-left:12px;color:var(--ink)!important}
+.rql{margin:2px 0 11px;padding-left:0;list-style:none;counter-reset:rq}
+.rql li{counter-increment:rq;position:relative;padding-left:26px;font-size:13px;line-height:1.5;
+  color:var(--ink);margin-bottom:6px;text-wrap:pretty}
+.rql li::before{content:counter(rq);position:absolute;left:0;top:1px;font:500 10px/1.6 var(--mono);
+  color:var(--accent);width:17px;text-align:right}
 .rcht{border-left:2px solid var(--ink3);padding-left:12px;margin-bottom:0!important}
 @media(max-width:900px){.rchh{flex-wrap:wrap}.rchw{text-align:left;flex:1 0 100%;margin-top:2px}}
 table.mkt td{font-size:12.5px}
