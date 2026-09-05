@@ -734,6 +734,33 @@ table.ldg td.lp .lid{font:500 10.5px/1 var(--mono);color:var(--ink3);margin-righ
 table.ldg td.lok{width:28%;border-left:2px solid var(--ok);padding-left:12px}
 table.ldg td.lno{width:28%;border-left:2px solid var(--no);padding-left:12px}
 table.ldg td.lwy{width:27%;border-left:2px solid var(--ink3);padding-left:12px}
+/* --- the three outcomes, and the money ---------------------------------------------------------- */
+table.oct td.lp{width:19%;min-width:150px}
+table.oct td.oc{width:27%;border-left:1px solid var(--line2);padding-left:13px;font-size:12.5px}
+.ocrc{display:block;font-size:11px;line-height:1.5;color:var(--ink3);margin:5px 0 7px}
+.ocrc .mono{font:500 10px/1 var(--mono)}
+.vv{display:block;font:500 11px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;
+  margin-bottom:6px}
+.v-ok{color:var(--ok)} .v-mx{color:var(--warn)} .v-wk{color:var(--ink3)} .v-no{color:var(--no)}
+.ocash{display:block;font:500 12px/1.4 var(--mono);color:var(--ink);margin:6px 0 5px}
+table.mtab td{font-size:12.5px}
+table.mtab td.lp{width:13%;min-width:112px}
+table.mtab td.mcash{width:13%;font:500 12.5px/1.5 var(--mono);color:var(--ink)}
+.grd{display:inline-block;font:500 9.5px/1 var(--mono);letter-spacing:.06em;color:var(--ink3);
+  background:var(--line2);padding:3px 5px;border-radius:3px;margin-left:6px;vertical-align:1px}
+.negs{max-width:82ch;margin-top:14px}
+.ngi{padding:14px 0 15px;border-bottom:1px solid var(--line2)}
+.ngi:last-child{border-bottom:0}
+.ngi h4{font-size:14px;font-weight:500;margin:0 0 6px;color:var(--ink);letter-spacing:-.005em;
+  text-wrap:balance}
+.ngi p{margin:0;font-size:13px;line-height:1.6;color:var(--ink2);text-wrap:pretty}
+@media(max-width:900px){
+  table.oct td.oc{border-left:2px solid var(--line);padding-left:11px}
+  table.oct td.oc:nth-of-type(2):before{content:"Green card"}
+  table.oct td.oc:nth-of-type(3):before{content:"Capital back"}
+  table.oct td.oc:nth-of-type(4):before{content:"What it earns"}
+  table.mtab td.mcash:before{content:"Cash out"}
+}
 table.sc td{font-size:12.5px}
 table.sc td.lp{width:14%;min-width:118px}
 table.sc td.lok,table.sc td.lno,table.sc td.lwy{width:21.5%}
