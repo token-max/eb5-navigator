@@ -679,7 +679,8 @@ tr.vsplit .eyebrow{display:block;margin-bottom:2px}
 /* --- one-screen ledger ------------------------------------------------------------------------- */
 
 /* Contents spine. Typography is the whole affordance -- no boxes, no icons, one hairline per row. */
-nav.spine{margin:34px 0 6px}
+nav.spine{margin:34px 0 6px;position:static;z-index:auto;background:none;backdrop-filter:none;
+  border-bottom:0;box-shadow:none}
 nav.spine .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
 nav.spine a{display:flex;gap:14px;align-items:baseline;padding:9px 0;border:0;
   border-bottom:1px solid var(--line2);text-decoration:none}
