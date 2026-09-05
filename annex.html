@@ -764,6 +764,18 @@ table.mtab td.mcash{width:13%;font:500 12.5px/1.5 var(--mono);color:var(--ink)}
   table.oct td.oc:nth-of-type(4):before{content:"What it earns"}
   table.mtab td.mcash:before{content:"Cash out"}
 }
+.snts-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 34px;margin-top:12px}
+.snt{padding:16px 0 17px;border-bottom:1px solid var(--line2)}
+.snth{display:flex;gap:10px;align-items:baseline;margin-bottom:7px}
+.snth h4{font-size:14px;font-weight:500;margin:0;color:var(--ink);letter-spacing:-.005em;
+  text-wrap:balance;flex:1}
+.sk{font:500 9.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:4px 6px;
+  border-radius:3px;white-space:nowrap;flex:0 0 auto;background:var(--line2);color:var(--ink3)}
+.sk-l{background:var(--warn-bg);color:var(--warn)}
+.sk-c{background:var(--no-bg);color:var(--no)}
+.snt p{font-size:12.5px;line-height:1.58;color:var(--ink2);margin:0 0 9px;text-wrap:pretty}
+.snts{border-left:2px solid var(--ink3);padding-left:11px;margin-bottom:0}
+@media(max-width:900px){.snts-grid{grid-template-columns:1fr}}
 table.mkt td{font-size:12.5px}
 table.mkt td.lp{width:13%;min-width:112px}
 table.mkt td.mono{font:500 12px/1.5 var(--mono);white-space:nowrap}
