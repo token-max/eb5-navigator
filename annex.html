@@ -187,11 +187,12 @@ header.tight h1{font-size:clamp(20px,2.3vw,27px);line-height:1.18;font-weight:50
 .verdict .lead{font-size:clamp(19px,2.2vw,25px);line-height:1.32;font-weight:600;letter-spacing:-.019em;margin:0 0 14px}
 .verdict p:last-child{margin-bottom:0}
 
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;margin:42px 0 0;
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:0;margin:42px 0 0;
   border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel)}
 .fact{padding:20px 22px;border-right:1px solid var(--line)}
 .fact:last-child{border-right:0}
-.fact .n{font-size:30px;font-weight:600;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.fact .n{font-size:clamp(21px,2.1vw,30px);font-weight:600;letter-spacing:-.03em;line-height:1.05;
+  font-variant-numeric:tabular-nums;white-space:nowrap}
 .fact .l{font-size:13px;font-weight:500;margin-top:7px}
 .fact .s{font-size:11.5px;color:var(--ink3);margin-top:3px;line-height:1.4}
 @media(max-width:760px){.fact{border-right:0;border-bottom:1px solid var(--line)}.fact:last-child{border-bottom:0}}
@@ -740,6 +741,11 @@ table.oct td.oc{width:27%;border-left:1px solid var(--line2);padding-left:13px;f
   padding-bottom:6px;border-bottom:1px solid var(--line2)}
 .v-ok{color:var(--ok)} .v-mx{color:var(--warn)} .v-wk{color:var(--ink3)} .v-no{color:var(--no)}
 .ocash{display:block;font:500 12px/1.4 var(--mono);color:var(--ink);margin:6px 0 5px}
+.ourread{display:block;margin-top:11px;padding-top:9px;border-top:1px dashed var(--line);
+  font-size:11px;line-height:1.9;color:var(--ink3)}
+.ourread i{font-style:normal;font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;
+  text-transform:uppercase}
+.ourread .pill{font-size:9.5px;padding:2px 6px}
 table.mtab td{font-size:12.5px}
 table.mtab td.lp{width:13%;min-width:112px}
 table.mtab td.mcash{width:13%;font:500 12.5px/1.5 var(--mono);color:var(--ink)}
@@ -758,6 +764,20 @@ table.mtab td.mcash{width:13%;font:500 12.5px/1.5 var(--mono);color:var(--ink)}
   table.oct td.oc:nth-of-type(4):before{content:"What it earns"}
   table.mtab td.mcash:before{content:"Cash out"}
 }
+table.mkt td{font-size:12.5px}
+table.mkt td.lp{width:13%;min-width:112px}
+table.mkt td.mono{font:500 12px/1.5 var(--mono);white-space:nowrap}
+.obs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 34px;margin-top:12px}
+.obc{padding:16px 0 17px;border-bottom:1px solid var(--line2)}
+.obh h4{font-size:14.5px;font-weight:500;margin:0 0 3px;color:var(--ink);letter-spacing:-.005em}
+.obm{display:block;font-size:11.5px;color:var(--ink3);margin-bottom:9px}
+.obsz{font:500 12px/1.5 var(--mono);color:var(--ink);margin:0 0 10px}
+.obc p{font-size:12.5px;line-height:1.58;color:var(--ink2);margin:0 0 9px;text-wrap:pretty}
+.obok{border-left:2px solid var(--ok);padding-left:11px}
+.obno{border-left:2px solid var(--no);padding-left:11px}
+.obp{font:500 9.5px/1 var(--mono);letter-spacing:.06em;color:var(--ink3);background:var(--line2);
+  padding:3px 6px;border-radius:3px}
+@media(max-width:900px){.obs{grid-template-columns:1fr}}
 table.sc td{font-size:12.5px}
 table.sc td.lp{width:14%;min-width:118px}
 table.sc td.lok,table.sc td.lno,table.sc td.lwy{width:21.5%}
@@ -807,7 +827,7 @@ h4.sevhead:first-child{margin-top:14px}
   <div class="navlinks"><a href="#primer">Start here</a><a href="#markets">The economy</a><a href="#claims">Claims</a><a href="#verify">Verified</a><a href="#record">Record</a>
   <a href="projects.html" class="sib">Back to the decision &rarr;</a>
   </div>
-  <span class="dl"><b>26</b> days to 30 Sep</span>
+  <span class="dl"><b>25</b> days to 30 Sep</span>
 </div></nav>
 
 <div class="wrap">
