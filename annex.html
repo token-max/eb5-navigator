@@ -801,6 +801,10 @@ table.mtab td.mcash{width:13%;font:500 12.5px/1.5 var(--mono);color:var(--ink)}
 .bclkh h4{font-size:14px;font-weight:500;margin:0;color:var(--ink);letter-spacing:-.005em;flex:1}
 .bsrc{font-size:10px;color:var(--ink3);white-space:nowrap}
 .bclk p{font-size:12.5px;line-height:1.58;color:var(--ink2);margin:0;text-wrap:pretty}
+.expandall{font:500 10.5px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;
+  padding:6px 9px;border:1px solid var(--line);border-radius:4px;background:transparent;
+  color:var(--ink2);cursor:pointer;white-space:nowrap;margin-left:14px}
+.expandall:hover{border-color:var(--ink3);color:var(--ink)}
 .vb-c{color:var(--ok);font-weight:500}
 .vb-u{color:var(--no);font-weight:500}
 .btcs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 26px;margin:10px 0 4px}
@@ -876,6 +880,10 @@ h4.sevhead:first-child{margin-top:14px}
   <div class="navlinks"><a href="#primer">Start here</a><a href="#markets">The economy</a><a href="#claims">Claims</a><a href="#verify">Verified</a><a href="#record">Record</a>
   <a href="projects.html" class="sib">Back to the decision &rarr;</a>
   </div>
+  <button type="button" class="expandall" onclick="var d=document.querySelectorAll('details'),n=0;
+    d.forEach(function(x){if(!x.open)n++});var o=n>0;d.forEach(function(x){x.open=o});
+    this.textContent=o?'Collapse all':'Expand all';"
+    title="Find-in-page cannot search inside a collapsed block">Expand all</button>
   <span class="dl"><b>25</b> days to 30 Sep</span>
 </div></nav>
 
