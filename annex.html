@@ -806,6 +806,37 @@ table.mtab td.mcash{width:13%;font:500 12.5px/1.5 var(--mono);color:var(--ink)}
 .snt p{font-size:12.5px;line-height:1.58;color:var(--ink2);margin:0 0 9px;text-wrap:pretty}
 .snts{border-left:2px solid var(--ink3);padding-left:11px;margin-bottom:0}
 @media(max-width:900px){.snts-grid{grid-template-columns:1fr}}
+/* The forum read. Deliberately the same table furniture as the ledger -- a forum claim gets no
+   visual authority the record does not, and the record column is the wide one. */
+.subhd{font-size:15px;font-weight:600;letter-spacing:-.008em;margin:38px 0 8px;color:var(--ink)}
+table.rdt td,table.rdt th{font-size:12.5px;line-height:1.55;padding:12px 14px 12px 0}
+table.rdt td.rrk,table.rdt th.rrk{width:1%;text-align:right;font:600 11px/1 var(--mono);
+  color:var(--ink3);padding-top:15px;white-space:nowrap}
+table.rdt td.racc,table.rdt th.racc{width:1%;text-align:right;font-variant-numeric:tabular-nums;
+  color:var(--ink3);white-space:nowrap;padding-top:14px}
+table.rdt td.rnm{width:16%;min-width:150px;color:var(--ink)}
+table.rdt td.rnm .st{display:block;font-size:11px;font-weight:400;color:var(--ink3);margin-top:4px;
+  line-height:1.45}
+table.rdt td.rsaid{width:34%;color:var(--ink2)}
+table.rdt td.rrec{color:var(--ink2);border-left:1px solid var(--line2);padding-left:14px}
+table.rdt td.rsaid .eyebrow{display:block;margin:0 0 3px}
+table.rdt td.rsaid .eyebrow+*{margin-top:0}
+table.rdsp td.rnm{width:14%}
+table.rdsp td.rsaid{width:36%}
+.nt{display:inline-block;font:500 9.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 5px;border-radius:3px;background:var(--line2);color:var(--ink3);margin-right:6px}
+.nt-p{background:var(--ok-bg);color:var(--ok)}
+.nt-n{background:var(--no-bg);color:var(--no)}
+.nt-m{background:var(--warn-bg);color:var(--warn)}
+.wrgs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 34px}
+.wrg{padding:15px 0 16px;border-bottom:1px solid var(--line2)}
+.wrgb{font-size:13px;line-height:1.5;color:var(--ink);margin:0 0 7px;font-style:italic;
+  text-wrap:pretty}
+.wrgc{font-size:12.5px;line-height:1.58;color:var(--ink2);margin:0;border-left:2px solid var(--no);
+  padding-left:11px;text-wrap:pretty}
+p.rprose{font-size:13px;line-height:1.62;color:var(--ink2);max-width:92ch;margin:0 0 12px;
+  text-wrap:pretty}
+@media(max-width:900px){.wrgs{grid-template-columns:1fr}}
 .rch{padding:19px 0 20px;border-bottom:1px solid var(--line2)}
 .rchh{display:flex;gap:10px;align-items:baseline;margin-bottom:4px}
 .rchh h4{font-size:15px;font-weight:500;margin:0;color:var(--ink);letter-spacing:-.008em;flex:0 0 auto}
@@ -877,8 +908,9 @@ table.mtab td.mcash{width:13%;font:500 12.5px/1.5 var(--mono);color:var(--ink)}
 .glx{font:500 11.5px/1.4 var(--mono);color:var(--ink2);margin:0 0 7px}
 .glw{font-size:12px;line-height:1.55;color:var(--ink3);margin:0;text-wrap:pretty}
 @media(max-width:900px){.gls{grid-template-columns:1fr;gap:0}}
-.ptab td{font-size:12.5px;vertical-align:top}
-tr.pnew td{background:color-mix(in oklch,var(--line2) 55%,transparent)}
+.ldg td{vertical-align:top}
+table.ldg td p{margin:0 0 9px;line-height:1.55}
+table.ldg td p:last-child{margin-bottom:0}
 .dep{font:500 9.5px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;padding:4px 6px;
   border-radius:3px;white-space:nowrap;background:var(--line2);color:var(--ink3)}
 .dep.d-full{background:var(--ok-bg);color:var(--ok)}
