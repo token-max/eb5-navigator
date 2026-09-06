@@ -908,6 +908,17 @@ p.rprose{font-size:13px;line-height:1.62;color:var(--ink2);max-width:92ch;margin
 .glx{font:500 11.5px/1.4 var(--mono);color:var(--ink2);margin:0 0 7px}
 .glw{font-size:12px;line-height:1.55;color:var(--ink3);margin:0;text-wrap:pretty}
 @media(max-width:900px){.gls{grid-template-columns:1fr;gap:0}}
+/* The ruled-out list. Eleven rows, id + name + the one fact, so the whole reject side of
+   the board reads in about twenty seconds instead of as a number with a caption. */
+.ros{display:grid;gap:0;border-top:1px solid var(--line2)}
+.ro{display:grid;grid-template-columns:34px minmax(150px,1.05fr) 2.6fr;gap:0 14px;
+  padding:8px 0;border-bottom:1px solid var(--line2);align-items:baseline}
+.ro .rid{font:600 11px/1.5 var(--mono);color:var(--no)}
+.ro .rnm2 a{font-size:12.5px;font-weight:500;color:var(--ink);border-bottom-color:transparent}
+.ro .rnm2 a:hover{border-bottom-color:var(--accent)}
+.ro .rwhy{font-size:12.5px;line-height:1.5;color:var(--ink2)}
+@media(max-width:760px){.ro{grid-template-columns:34px 1fr;gap:0 12px}
+  .ro .rwhy{grid-column:2}}
 .ldg td{vertical-align:top}
 table.ldg td p{margin:0 0 9px;line-height:1.55}
 table.ldg td p:last-child{margin-bottom:0}
