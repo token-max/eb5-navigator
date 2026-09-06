@@ -826,6 +826,14 @@ table.mtab td.mcash{width:13%;font:500 12.5px/1.5 var(--mono);color:var(--ink)}
   padding:6px 9px;border:1px solid var(--line);border-radius:4px;background:transparent;
   color:var(--ink2);cursor:pointer;white-space:nowrap;margin-left:14px}
 .expandall:hover{border-color:var(--ink3);color:var(--ink)}
+.finder{display:flex;align-items:center;gap:7px;margin-left:auto}
+.finder input{font:400 11.5px/1.3 var(--sans);width:210px;padding:4px 8px;border-radius:5px;
+  border:1px solid var(--line);background:var(--bg);color:var(--ink);outline:none}
+.finder input:focus{border-color:var(--accent)}
+.finder input::placeholder{color:var(--ink3)}
+.finder b{font:500 10.5px/1 var(--mono);letter-spacing:.03em;white-space:nowrap;color:var(--ink3)}
+.finder b.ok{color:var(--ok)} .finder b.no{color:var(--no)}
+@media(max-width:900px){.finder input{width:130px}.finder b{display:none}}
 .vb-c{color:var(--ok);font-weight:500}
 .vb-u{color:var(--no);font-weight:500}
 .btcs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 26px;margin:10px 0 4px}
@@ -967,12 +975,54 @@ h4.sevhead:first-child{margin-top:14px}
   <div class="navlinks"><a href="#primer">Start here</a><a href="#markets">The economy</a><a href="#claims">Claims</a><a href="#verify">Verified</a><a href="#record">Record</a>
   <a href="projects.html" class="sib">Back to the decision &rarr;</a>
   </div>
-  <button type="button" class="expandall" onclick="var d=document.querySelectorAll('details'),n=0;
-    d.forEach(function(x){if(!x.open)n++});var o=n>0;d.forEach(function(x){x.open=o});
-    this.textContent=o?'Collapse all':'Expand all';"
-    title="Find-in-page cannot search inside a collapsed block">Expand all</button>
+  <span class="finder">
+    <input type="search" id="pf" placeholder="Find anything, including folded text"
+           autocomplete="off" spellcheck="false"
+           oninput="pfRun(this.value)" onsearch="pfRun(this.value)">
+    <b id="pfn"></b>
+  </span>
+  <button type="button" class="expandall" onclick="pfAll(this)"
+    title="Opens every folded block on the page">Expand all</button>
   <span class="dl"><b>25</b> days to 30 Sep</span>
 </div></nav>
+<script>
+// Open every <details> whose text contains the term, plus its ancestors, so the browser's own
+// find-in-page can then see it. Deliberately does NOT highlight or scroll: the reader's next
+// keystroke is Cmd+F, and competing with it would be worse than useless.
+// Whitespace is normalised on BOTH sides before comparing. The source wraps prose at ~100
+// columns, so a phrase the reader can see on one rendered line is split by a newline in
+// textContent; a raw indexOf then reports "nothing on this page" for text plainly on the page.
+// Caught by the headless test, which built its needle the way a reader would read it.
+// The normalised text is cached per element -- recomputing 936k characters on every keystroke
+// across 174 blocks is not free.
+function pfNorm(el){
+  if(el.__pf===undefined) el.__pf=el.textContent.replace(/\s+/g,' ').toLowerCase();
+  return el.__pf;
+}
+function pfRun(q){
+  var out=document.getElementById('pfn'), all=document.querySelectorAll('details');
+  q=(q||'').replace(/\s+/g,' ').trim().toLowerCase();
+  all.forEach(function(d){ d.open=false; });
+  if(q.length<2){ out.textContent=''; out.className=''; return; }
+  var n=0;
+  all.forEach(function(d){
+    if(pfNorm(d).indexOf(q)<0) return;
+    n++;
+    for(var el=d; el; el=el.parentElement&&el.parentElement.closest('details')) el.open=true;
+  });
+  // Text outside any <details> was never hidden, so report it separately rather than claim a zero.
+  var loose=pfNorm(document.body).split(q).length-1;
+  out.textContent = n? n+' folded block'+(n==1?'':'s')+' opened \u00b7 '+loose+' on page \u2014 now use \u2318F'
+                     : (loose? loose+' on page, none folded \u2014 use \u2318F' : 'nothing on this page');
+  out.className = (n||loose)? 'ok' : 'no';
+}
+function pfAll(b){
+  var d=document.querySelectorAll('details'), shut=0;
+  d.forEach(function(x){ if(!x.open) shut++; });
+  var o=shut>0; d.forEach(function(x){ x.open=o; });
+  b.textContent=o?'Collapse all':'Expand all';
+}
+</script>
 
 <div class="wrap">
 <header class="tight">
