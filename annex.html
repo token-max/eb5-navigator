@@ -910,6 +910,35 @@ p.rprose{font-size:13px;line-height:1.62;color:var(--ink2);max-width:92ch;margin
 @media(max-width:900px){.gls{grid-template-columns:1fr;gap:0}}
 /* The ruled-out list. Eleven rows, id + name + the one fact, so the whole reject side of
    the board reads in about twenty seconds instead of as a number with a caption. */
+/* The approved list, directly under the masthead. Row furniture only -- the emphasis has to be
+   on the four not-covered cards beneath it, not on the reassuring list above them. */
+.aprs{border-top:1px solid var(--line);margin:6px 0 26px}
+.aprh{display:flex;gap:12px;align-items:baseline;padding:14px 0 8px;border-bottom:1px solid var(--line2)}
+.aprh .eyebrow{flex:1;margin:0}
+.aprh b{font:600 15px/1 var(--mono);color:var(--ok)}
+.aprh.gap b{color:var(--warn)}
+.apr{display:grid;grid-template-columns:34px minmax(130px,1.35fr) 100px 132px 128px 1.5fr;gap:0 14px;
+  padding:11px 0;border-bottom:1px solid var(--line2);align-items:baseline}
+.apr .aid{font:600 11px/1.5 var(--mono);color:var(--ink3)}
+.apr .anm a{font-size:13.5px;font-weight:500;color:var(--ink);border-bottom-color:transparent}
+.apr .anm a:hover{border-bottom-color:var(--accent)}
+.apr .asub{display:block;font-size:11px;font-weight:400;color:var(--ink3);margin-top:3px;line-height:1.4}
+.apr .arn{font:500 11.5px/1.4 var(--mono);color:var(--ink2)}
+.apr .agap{font-size:12px;line-height:1.5;color:var(--warn)}
+.apr-gap{background:color-mix(in oklch,var(--warn) 3.5%,transparent)}
+.apr .sb b{font:600 12px/1.4 var(--mono);display:block}
+.sb-ok b{color:var(--ok)}.sb-wn b{color:var(--warn)}.sb-no b{color:var(--no)}
+.ncvs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 30px;margin-top:4px}
+.ncv{padding:13px 0 14px;border-bottom:1px solid var(--line2)}
+.ncv h4{font-size:13.5px;font-weight:600;margin:0 0 6px;color:var(--no);letter-spacing:-.005em}
+.ncv p{font-size:12.5px;line-height:1.58;color:var(--ink2);margin:0;text-wrap:pretty}
+blockquote.stat{margin:24px 0 22px;padding:16px 0 0 18px;border-left:2px solid var(--ink3);
+  font-size:12.5px;line-height:1.62;color:var(--ink2);max-width:96ch;text-wrap:pretty}
+blockquote.stat cite{display:block;margin-top:9px;font-style:normal;font:500 10.5px/1.4 var(--mono);
+  letter-spacing:.04em;color:var(--ink3)}
+@media(max-width:900px){.ncvs{grid-template-columns:1fr}
+  .apr{grid-template-columns:34px 1fr;gap:2px 12px}
+  .apr .apill,.apr .arn,.apr .sb,.apr .agap{grid-column:2}}
 .ros{display:grid;gap:0;border-top:1px solid var(--line2)}
 .ro{display:grid;grid-template-columns:34px minmax(150px,1.05fr) 2.6fr;gap:0 14px;
   padding:8px 0;border-bottom:1px solid var(--line2);align-items:baseline}
