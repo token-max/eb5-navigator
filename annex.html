@@ -409,6 +409,19 @@ table.acts td.w.dn{color:var(--ok)}
 .dc-r span{display:block;font-size:10.5px;line-height:1.35;letter-spacing:.07em;text-transform:uppercase;
   color:var(--ink3);margin-top:6px}
 
+/* Band A0 -- what is exposed. Three stacked rows rather than three columns: they are not alternatives
+   to compare, they are three things that are all true at once, and a column layout invites reading one. */
+.dexps{margin:18px 0 0}
+.dexp{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:13px 16px;
+  margin:9px 0 0}
+.dexh{display:flex;align-items:baseline;gap:10px;margin:0 0 6px;flex-wrap:wrap}
+.dexh b{font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+.dext{flex:0 0 auto;font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--ink3);
+  border:1px solid var(--line);border-radius:4px;padding:2px 6px;font-variant-numeric:tabular-nums}
+.dexl{margin-left:auto;font-size:11.5px;color:var(--ink3);text-decoration:none;white-space:nowrap}
+.dexl:hover{color:var(--ink);text-decoration:underline}
+.dexp p{font-size:13.5px;line-height:1.62;color:var(--ink2);margin:0;max-width:88ch;text-wrap:pretty}
+
 /* Band B -- the branch. Rendered as two boxes rather than prose because the reader's question is
    "which one", and a fork drawn as a fork answers it without being read. */
 .dbranch{margin:16px 0 0;border:1px solid var(--line);border-radius:11px;background:var(--panel);
