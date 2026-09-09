@@ -383,6 +383,10 @@ table.acts td.sl b{color:var(--ink2)}
 table.acts tr.milestone td{background:color-mix(in oklch,var(--no) 4%,transparent)}
 table.acts tr.donerow td{opacity:.66}
 table.acts td.w.dn{color:var(--ok)}
+/* An owner action whose date has passed. Muted rather than alarming: it is a fact about the
+   schedule, not an error, and three of these shout louder than the deadlines they precede. */
+table.acts td.w.over{color:var(--ink2);text-decoration:line-through;text-decoration-color:var(--line2)}
+.odue{display:block;margin-top:2px;font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--warn);text-decoration:none}
 .ochip.dn{background:var(--ok-bg);color:var(--ok)}
 .ochip{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
   padding:2px 6px;border-radius:4px;white-space:nowrap}
