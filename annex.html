@@ -1099,6 +1099,93 @@ h4.sevhead:first-child{margin-top:14px}
   table.vtab td.vid{font-size:15px;padding-top:14px}
   tr.vsplit td{padding:8px 0 14px}
 }
+
+
+/* ============================================================================
+   LAYOUT PASS, 9 September 2026 (E-161). The owner's report, looking at the
+   live page at 1440px: "still looks so dense, too narrow, not structured /
+   separated / properly visualized enough".
+
+   Diagnosed from a render, not from the source. Three real faults:
+   1. PROSE RIBBON. .wrap is 1180px and tables use all of it, but every prose
+      block was capped at 74ch (~510px at 15px). Text ran as a narrow ribbon
+      down the left with ~550px of dead space beside it, against full-width
+      tables underneath. The mismatch is what reads as "narrow".
+   2. NO ROW-LABEL WIDTH. .ldg had rules for td.lp/.lok/.lno/.lwy but NONE for
+      the tbody th that carries the row label, so it fell to a generic th and
+      collapsed: "HOW MUCH IS ALREADY SOLD AND HOW OLD THAT NUMBER IS" wrapped
+      to FIVE lines in ~85px.
+   3. NO SEPARATION AND NO PICTURE. Sections were divided by a hairline and
+      nothing else, and every quantity on the page -- 12.60 vs 11.55 jobs,
+      16 vs 18 of 55, 4/8 vs 5/8 -- was prose in a cell. Nothing was drawn.
+   ============================================================================ */
+
+.wrap{max-width:1340px}
+
+/* 1. Prose gets a real measure. 74ch -> 94ch, and the small print with it. */
+.obody,.oask li,.ocav,.lesson .lbody p,.nf p{max-width:94ch}
+.sechead p.small,.pbody p,.sechead p{max-width:94ch}
+p.small{font-size:14px;line-height:1.7}
+
+/* 2. The row label gets width, weight and contrast. */
+.ldg tbody th{width:15%;min-width:186px;vertical-align:top;text-align:left;
+  font:600 11.5px/1.42 var(--sans);letter-spacing:.045em;text-transform:uppercase;
+  color:var(--ink2);padding:14px 20px 14px 0;border-bottom:1px solid var(--line2)}
+.ldg tbody tr:last-child th{border-bottom:0}
+
+/* 3a. Sections read as separate objects, not one scroll. */
+main > section{padding-top:16px;margin-top:44px;border-top:1px solid var(--line)}
+main > section:first-of-type{border-top:0;margin-top:0}
+.sechead h2{font-size:clamp(21px,2.3vw,29px);margin-bottom:6px}
+.sechead h3.ph{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
+
+/* 3b. The head-to-head bars. Two rows per metric, one per project, each bar
+       proportional to that metric's own max so the pair is comparable. The
+       number is always printed beside the bar -- a bar alone is decoration. */
+.h2h{border:1px solid var(--line);border-radius:12px;background:var(--panel);
+  padding:22px 24px 18px;margin:0 0 30px}
+.h2h > .h2hcap{font:600 11px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink3);margin:0 0 18px}
+.h2hrow{display:grid;grid-template-columns:minmax(150px,208px) 1fr;gap:16px;
+  padding:13px 0;border-top:1px solid var(--line2);align-items:center}
+.h2hrow:first-of-type{border-top:0}
+.h2hlab{font-size:12.5px;line-height:1.4;color:var(--ink2)}
+.h2hlab i{display:block;font-style:normal;font-size:11px;color:var(--ink3);margin-top:2px}
+.h2hbars{display:grid;gap:7px}
+.h2hbar{display:grid;grid-template-columns:44px 1fr auto;gap:11px;align-items:center}
+.h2hbar .pid{font:600 10.5px/1 var(--mono);color:var(--ink3);letter-spacing:.04em}
+.h2htrack{height:19px;border-radius:5px;background:var(--line2);overflow:hidden}
+.h2hfill{height:100%;border-radius:5px;display:block}
+.h2hfill.a{background:oklch(62% .12 250)}
+.h2hfill.b{background:oklch(66% .13 155)}
+.h2hfill.n{background:var(--ink3);opacity:.42}
+.h2hval{font:600 13px/1 var(--mono);color:var(--ink);font-variant-numeric:tabular-nums;
+  min-width:88px;text-align:right}
+.h2hval s{text-decoration:none;font-weight:400;color:var(--ink3)}
+.h2hfoot{margin:16px 0 0;padding-top:14px;border-top:1px solid var(--line2);
+  font-size:12px;line-height:1.6;color:var(--ink3);max-width:94ch}
+@media(max-width:760px){
+  .h2hrow{grid-template-columns:1fr;gap:9px}
+  .ldg tbody th{min-width:0;width:auto}
+}
+
+/* 4. The hero. A second h1 rule later in the sheet was overriding the first, capping the
+      page headline at 27px and 34ch -- about 500px of text inside a 1440px viewport, with
+      the rest of the row empty. It is the first thing on the page and it read as a column
+      of fragments. Wider measure, larger type, and the dead space is gone. */
+h1{font-size:clamp(28px,3.4vw,42px);line-height:1.14;max-width:1020px;letter-spacing:-.022em;
+  text-wrap:pretty}
+/* AND the hero header must not be a flex container. A third `header` rule later in the
+   sheet sets display:flex;flex-wrap:wrap for the inline header pattern used elsewhere; the
+   page hero inherits it, which makes the h1 a FLEX ITEM that shrinks to its content instead
+   of filling, so max-width never binds. Two rules were changed before this one was found --
+   the width and the text-wrap were both innocent. Measure the computed box, do not guess. */
+header.tight{display:block}
+header.tight h1{max-width:1020px}
+/* NOT balance: h1,h2,h3,h4 sets balance globally, which distributes the
+     headline into short even lines and ignores max-width entirely -- that, not the width
+     rule, was why the hero stayed a ~500px column in a 1440px viewport. */
+.hero-tag{margin-bottom:18px}
 </style>
 </head><body>
 
@@ -1158,7 +1245,7 @@ function pfAll(b){
 
 <div class="wrap">
 <header class="tight">
-  <span class="hero-tag">Annex &middot; as at 4 September 2026</span>
+  <span class="hero-tag">Annex &middot; as at 9 September 2026</span>
   <h1>The evidence behind the decision.</h1>
   <p class="small" style="max-width:70ch;margin-top:10px;color:var(--ink2)">Ten reference sections,
   moved off the decision page so it could be read in one sitting. Nothing here was cut or shortened
@@ -3438,7 +3525,7 @@ Where a document does not exist or will not be produced, I would rather be told 
   drawn from materials supplied by the parties selling these offerings and from public records, and may
   be incomplete or superseded. Anyone acting on any of it should retain their own independent immigration
   counsel and their own securities counsel first.</p>
-  <p style="margin-top:14px">Compiled 4 September 2026. Project names and entity names appear as published by
+  <p style="margin-top:14px">Compiled 9 September 2026. Project names and entity names appear as published by
   their sponsors. No sponsor has reviewed, endorsed or contributed to this page.</p>
 </div></footer>
 </div>
